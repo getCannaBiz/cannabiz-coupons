@@ -21,6 +21,12 @@ Although not required, Dispensary Coupons was built with the [WP Dispensary](htt
 
 Want to help this plugin get better? Head over to [Github](https://github.com/deviodigital/dispensary-coupons) and open an issue or submit a pull request.
 
+== Screenshots ==
+
+1. Dispensary Coupons in the dashboard menu
+2. An example of how the widget displays the coupons
+3. The widget editor in the WordPress dashboard
+
 == Installation ==
 
 1. Upload the `dispensary-coupons` folder to the `/wp-content/plugins/` directory or add it directly through your WordPress admin dashboard
