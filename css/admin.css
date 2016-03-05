@@ -1,0 +1,29 @@
+/**
+ * DispensaryCoupons admin CSS
+ *
+ * @package     DispensaryCoupons\CSS
+ * @since       1.0.0
+ */
+
+
+/* Leafly Specials admin
+-------------------------------------------------------------- */
+
+div.widget[id*=_wpdcoupons_] .widget-top,
+div.widget[id*=_wpdcoupons_] .widget-top:hover {
+	border-color: #d44729;
+}
+
+div.widget[id*=_wpdcoupons_] .widget-title,
+div.widget[id*=_wpdcoupons_] .widget-title h3 {
+	background: #d44729;
+	color: #FFF;
+}
+
+div.widget[id*=_wpdcoupons_] .widget-title .in-widget-title {
+	color: rgba(255,255,255,0.6);
+}
+
+div.widget[id*=_wpdcoupons_] .widget-action {
+	color: #FFF;
+}

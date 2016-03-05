@@ -1,0 +1,28 @@
+/**
+ * DispensaryCoupons CSS
+ *
+ * @package     DispensaryCoupons\CSS
+ * @since       1.0.0
+ */
+
+
+/* Dispensary Coupons widget
+-------------------------------------------------------------- */
+
+.wpd-coupons-plugin-meta {
+	border: 2px dashed #eee;
+	margin: 0 0 12px 0;
+	padding: 6px 12px;
+	position: relative;
+	width: 100%;
+}
+
+.wpd-coupons-plugin-meta h3,
+.wpd-coupons-plugin-meta p {
+	margin: 6px 0 !important;
+	padding: 0 !important;
+}
+
+.wpd-coupons-plugin-meta-item.fineprint {
+	color: #ccc;
+}
