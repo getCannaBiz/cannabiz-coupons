@@ -148,7 +148,7 @@ class wpdcoupons_widget extends WP_Widget {
             false,
             __( 'Dispensary Coupons', 'wpd-coupons' ),
             array(
-                'description'  => __( 'Display your recent dispensary specials.', 'wpd-coupons' )
+                'description'  => __( 'Display your recent dispensary coupons.', 'wpd-coupons' )
             )
         );
     }
@@ -191,21 +191,21 @@ class wpdcoupons_widget extends WP_Widget {
 			
 					echo "<div class='wpd-coupons-plugin-meta'>";
 
-					if('on' == $instance['specialtitle'] ) {
-						// Display special title
+					if('on' == $instance['coupontitle'] ) {
+						/** Display coupon title */
 						echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
 					}
 					
-					if('on' == $instance['specialdetails'] ) {
-						// Display special details
+					if('on' == $instance['coupondetails'] ) {
+						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
 					}
 
 					echo "</div>";
 
 					if('on' == $instance['viewall'] ) {
-						// Display if user would shop again if they say YES
-						echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='". $instance['viewallurl'] ."' target='_blank'>View all specials &rarr;</a></span></p>";
+						/** Display link to all coupons */
+						echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='". $instance['viewallurl'] ."' target='_blank'>View all coupons &rarr;</a></span></p>";
 					}
 
 			endwhile; // end loop
@@ -231,8 +231,8 @@ class wpdcoupons_widget extends WP_Widget {
 
         $instance['title']      		= strip_tags( $new_instance['title'] );
         $instance['limit']   			= strip_tags( $new_instance['limit'] );
-        $instance['specialtitle']		= $new_instance['specialtitle'];
-        $instance['specialdetails']		= $new_instance['specialdetails'];
+        $instance['coupontitle']		= $new_instance['coupontitle'];
+        $instance['coupondetails']		= $new_instance['coupondetails'];
         $instance['viewall']			= $new_instance['viewall'];
         $instance['viewallurl']			= $new_instance['viewallurl'];
 
@@ -253,8 +253,8 @@ class wpdcoupons_widget extends WP_Widget {
         $defaults = array(
             'title'  		    => 'Dispensary Coupons',
             'limit'  			=> '5',
-            'specialtitle' 		=> '',
-            'specialdetails' 	=> '',
+            'coupontitle' 		=> '',
+            'coupondetails' 	=> '',
 			'viewall'			=> '',
 			'viewallurl'		=> ''
         );
@@ -267,23 +267,23 @@ class wpdcoupons_widget extends WP_Widget {
         </p>
 		
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'Amount of specials to show:', 'wpd-coupons' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'Amount of coupons to show:', 'wpd-coupons' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php echo $instance['limit']; ?>" />
         </p>
 		
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['specialtitle'], 'on'); ?> id="<?php echo $this->get_field_id('specialtitle'); ?>" name="<?php echo $this->get_field_name('specialtitle'); ?>" /> 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'specialtitle' ) ); ?>"><?php _e( 'Display special title?', 'wpd-coupons' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked($instance['coupontitle'], 'on'); ?> id="<?php echo $this->get_field_id('coupontitle'); ?>" name="<?php echo $this->get_field_name('coupontitle'); ?>" /> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'coupontitle' ) ); ?>"><?php _e( 'Display coupon title?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['specialdetails'], 'on'); ?> id="<?php echo $this->get_field_id('specialdetails'); ?>" name="<?php echo $this->get_field_name('specialdetails'); ?>" /> 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'specialdetails' ) ); ?>"><?php _e( 'Display special details?', 'wpd-coupons' ); ?></label>
+			<input class="checkbox" type="checkbox" <?php checked($instance['coupondetails'], 'on'); ?> id="<?php echo $this->get_field_id('coupondetails'); ?>" name="<?php echo $this->get_field_name('coupondetails'); ?>" /> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php _e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['viewall'], 'on'); ?> id="<?php echo $this->get_field_id('viewall'); ?>" name="<?php echo $this->get_field_name('viewall'); ?>" /> 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php _e( 'Display link to all specials?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php _e( 'Display link to all coupons?', 'wpd-coupons' ); ?></label>
         </p>
 
         <p>
@@ -340,12 +340,12 @@ function wpdcoupons_shortcode( $atts ) {
 					echo "<div class='wpd-coupons-plugin-meta'>";
 
 					if ( 'yes' == $title ) {
-						// Display special title
+						/** Display coupon title */
 						echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
 					}
 					
 					if ( 'yes' == $details ) {
-						// Display special details
+						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
 					}
 
