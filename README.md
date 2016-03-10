@@ -1,7 +1,6 @@
-# Dispensary Coupons
-WordPress plugin that lets you add coupons to your dispensary website
-
 ![Dispensary Coupons] (http://www.robertdevore.com/wp-content/uploads/2016/03/dispensary-coupons-github.jpg)
+
+WordPress plugin that lets you add coupons to your dispensary website
 
 **Currently under active development.**
 
@@ -33,6 +32,4 @@ Want to help this plugin get better? Issues and pull requests are more than welc
 
 ~Current Version:0.1~
 
-**0.1**
-
-* Initial Release
+[view CHANGELOG.md](https://github.com/deviodigital/dispensary-coupons/blob/master/CHANGELOG.md)
