@@ -608,6 +608,7 @@ function wpdcoupons_shortcode( $atts ) {
 		'limit' => '5',
 		'title' => 'yes',
 		'details' => 'yes',
+		'products' => 'yes'
 	), $atts ) );
 
 	ob_start();
@@ -633,6 +634,31 @@ function wpdcoupons_shortcode( $atts ) {
 					if ( 'yes' == $details ) {
 						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
+					}
+
+					if('yes' == $products ) {
+						/** Display products that the coupon applies to */
+						$couponflower = get_post_meta( get_the_id(), '_selected_flowers', true );
+						$couponedible = get_post_meta( get_the_id(), '_selected_edibles', true );
+						$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+						$couponpreroll = get_post_meta( get_the_id(), '_selected_prerolls', true );
+						
+						echo "<span class='wpd-coupons-plugin-meta-item'>";
+						
+						if ( ! $couponflower == '' ) {
+							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+						}
+						if ( ! $couponedible == '' ) {
+							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+						}
+						if ( ! $couponconcentrate == '' ) {
+							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+						}
+						if ( ! $couponpreroll == '' ) {
+							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+						}
+						
+						echo "</span>";
 					}
 
 					echo "</div>";
