@@ -128,6 +128,258 @@ add_action( 'init', 'wpdispensary_coupons', 0 );
 
 }
 
+if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	
+/**
+ * Flowers Coupons
+ *
+ * Adds the Prices metabox to all the flower custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Flowers {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'flowers';
+	var $SELECT_POST_LABEL = 'Flower';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Flower', 'wp-dispensary' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
+		}
+	}
+}
+new Coupons_Flowers();
+
+/**
+ * Edibles Coupons
+ *
+ * Adds the Prices metabox to the Dispensary Coupons cutom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Edibles {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'edibles';
+	var $SELECT_POST_LABEL = 'Edible';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Edible', 'wp-dispensary' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
+		}
+	}
+}
+new Coupons_Edibles();
+
+/**
+ * Concentrates Coupons
+ *
+ * Adds the Prices metabox to all the concentrate custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Concentrates {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'concentrates';
+	var $SELECT_POST_LABEL = 'Concentrate';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Concentrate', 'wp-dispensary' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
+		}
+	}
+}
+new Coupons_Concentrates();
+
+/**
+ * Pre-rolls Coupons
+ *
+ * Adds the Prices metabox to all the pre-roll custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Prerolls {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'prerolls';
+	var $SELECT_POST_LABEL = 'Pre-roll';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Pre-roll', 'wp-dispensary' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
+		}
+	}
+}
+new Coupons_Prerolls();
+
+}
+
 
 /**
  * Dispensary Coupons Widget
@@ -200,6 +452,31 @@ class wpdcoupons_widget extends WP_Widget {
 						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
 					}
+					
+					if('on' == $instance['couponproduct'] ) {
+						/** Display products that the coupon applies to */
+						$couponflower = get_post_meta( get_the_id(), '_selected_flowers', true );
+						$couponedible = get_post_meta( get_the_id(), '_selected_edibles', true );
+						$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+						$couponpreroll = get_post_meta( get_the_id(), '_selected_prerolls', true );
+						
+						echo "<span class='wpd-coupons-plugin-meta-item'>";
+						
+						if ( ! $couponflower == '' ) {
+							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+						}
+						if ( ! $couponedible == '' ) {
+							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+						}
+						if ( ! $couponconcentrate == '' ) {
+							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+						}
+						if ( ! $couponpreroll == '' ) {
+							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+						}
+						
+						echo "</span>";
+					}
 
 					echo "</div>";
 
@@ -233,6 +510,7 @@ class wpdcoupons_widget extends WP_Widget {
         $instance['limit']   			= strip_tags( $new_instance['limit'] );
         $instance['coupontitle']		= $new_instance['coupontitle'];
         $instance['coupondetails']		= $new_instance['coupondetails'];
+		$instance['couponproduct']		= $new_instance['couponproduct'];
         $instance['viewall']			= $new_instance['viewall'];
         $instance['viewallurl']			= $new_instance['viewallurl'];
 
@@ -255,6 +533,7 @@ class wpdcoupons_widget extends WP_Widget {
             'limit'  			=> '5',
             'coupontitle' 		=> '',
             'coupondetails' 	=> '',
+            'couponproduct' 	=> '',
 			'viewall'			=> '',
 			'viewallurl'		=> ''
         );
@@ -280,6 +559,13 @@ class wpdcoupons_widget extends WP_Widget {
 			<input class="checkbox" type="checkbox" <?php checked($instance['coupondetails'], 'on'); ?> id="<?php echo $this->get_field_id('coupondetails'); ?>" name="<?php echo $this->get_field_name('coupondetails'); ?>" /> 
 			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php _e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
         </p>
+
+		<?php if( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
+	    <p>
+			<input class="checkbox" type="checkbox" <?php checked($instance['couponproduct'], 'on'); ?> id="<?php echo $this->get_field_id('couponproduct'); ?>" name="<?php echo $this->get_field_name('couponproduct'); ?>" /> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display product coupon applies to?', 'wpd-coupons' ); ?></label>
+        </p>
+		<?php } ?>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['viewall'], 'on'); ?> id="<?php echo $this->get_field_id('viewall'); ?>" name="<?php echo $this->get_field_name('viewall'); ?>" /> 
