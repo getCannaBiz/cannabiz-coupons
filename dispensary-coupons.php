@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add coupons to your dispensary website, brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		0.1
+ * Version:		1.0
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -563,7 +563,7 @@ class wpdcoupons_widget extends WP_Widget {
 		<?php if( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['couponproduct'], 'on'); ?> id="<?php echo $this->get_field_id('couponproduct'); ?>" name="<?php echo $this->get_field_name('couponproduct'); ?>" /> 
-			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display product coupon applies to?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display products this coupon applies to?', 'wpd-coupons' ); ?></label>
         </p>
 		<?php } ?>
 
