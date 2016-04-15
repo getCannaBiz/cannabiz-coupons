@@ -41,30 +41,6 @@ add_action( 'admin_enqueue_scripts', 'wpdcoupons_load_admin_scripts' );
 
 
 /**
- * Plugin update notification
- *
- * @since	   1.0.0
- */
-include_once('updater.php');
-
-if (is_admin()) { /* Double check that everything is happening in the admin */
-	$config = array(
-		'slug' => plugin_basename(__FILE__), /* This is the slug of your plugin */
-		'proper_folder_name' => 'dispensary-coupons', /* This is the name of the folder your plugin lives in */
-		'api_url' => 'https://api.github.com/repos/deviodigital/dispensary-coupons', /* The GitHub API url of your GitHub repo */
-		'raw_url' => 'https://raw.github.com/deviodigital/dispensary-coupons/master', /* The GitHub raw url of your GitHub repo */
-		'github_url' => 'https://github.com/deviodigital/dispensary-coupons', /* The GitHub url of your GitHub repo */
-		'zip_url' => 'https://github.com/deviodigital/dispensary-coupons/zipball/master', /* The zip url of the GitHub repo */
-		'sslverify' => true, /* Whether WP should check the validity of the SSL cert when getting an update */
-		'requires' => '3.0', /* Which version of WordPress does your plugin require? */
-		'tested' => '4.4.2', /* Which version of WordPress is your plugin tested up to? */
-		'readme' => 'README.md', /* Which file to use as the readme for the version number */
-		'access_token' => '', /* Access private repositories by authorizing under Appearance > GitHub Updates when this example plugin is installed */
-	);
-	new WP_GitHub_Updater($config);
-}
-
-/**
  * Coupons post type creation
  *
  * @since	   1.0.0

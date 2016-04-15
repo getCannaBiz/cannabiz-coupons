@@ -32,6 +32,4 @@ Want to help this plugin get better? Issues and pull requests are more than welc
 
 ## Changelog
 
-~Current Version:1.0~
-
 [view CHANGELOG.md](https://github.com/deviodigital/dispensary-coupons/blob/master/CHANGELOG.md)
