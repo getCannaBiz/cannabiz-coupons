@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add coupons to your dispensary website, brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		0.1
+ * Version:		1.0
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -41,37 +41,13 @@ add_action( 'admin_enqueue_scripts', 'wpdcoupons_load_admin_scripts' );
 
 
 /**
- * Plugin update notification
- *
- * @since	   1.0.0
- */
-include_once('updater.php');
-
-if (is_admin()) { /* Double check that everything is happening in the admin */
-	$config = array(
-		'slug' => plugin_basename(__FILE__), /* This is the slug of your plugin */
-		'proper_folder_name' => 'dispensary-coupons', /* This is the name of the folder your plugin lives in */
-		'api_url' => 'https://api.github.com/repos/deviodigital/dispensary-coupons', /* The GitHub API url of your GitHub repo */
-		'raw_url' => 'https://raw.github.com/deviodigital/dispensary-coupons/master', /* The GitHub raw url of your GitHub repo */
-		'github_url' => 'https://github.com/deviodigital/dispensary-coupons', /* The GitHub url of your GitHub repo */
-		'zip_url' => 'https://github.com/deviodigital/dispensary-coupons/zipball/master', /* The zip url of the GitHub repo */
-		'sslverify' => true, /* Whether WP should check the validity of the SSL cert when getting an update */
-		'requires' => '3.0', /* Which version of WordPress does your plugin require? */
-		'tested' => '4.4.2', /* Which version of WordPress is your plugin tested up to? */
-		'readme' => 'README.md', /* Which file to use as the readme for the version number */
-		'access_token' => '', /* Access private repositories by authorizing under Appearance > GitHub Updates when this example plugin is installed */
-	);
-	new WP_GitHub_Updater($config);
-}
-
-/**
  * Coupons post type creation
  *
  * @since	   1.0.0
  */
-if ( ! function_exists('wpdispensary_coupons') ) {
+if ( ! function_exists( 'wpdispensary_coupons' ) ) {
 
-// Register Custom Post Type
+/** Register Custom Post Type */
 function wpdispensary_coupons() {
 
 	$labels = array(
@@ -112,7 +88,7 @@ function wpdispensary_coupons() {
 		'show_ui'               => true,
 		'show_in_menu'          => true,
 		'menu_position'         => 10,
-		'menu_icon'             => plugin_dir_url( __FILE__ ) . ('images/menu-icon.png'),
+		'menu_icon'             => plugin_dir_url( __FILE__ ) . ( 'images/menu-icon.png' ),
 		'show_in_admin_bar'     => true,
 		'show_in_nav_menus'     => true,
 		'can_export'            => true,
@@ -125,6 +101,262 @@ function wpdispensary_coupons() {
 
 }
 add_action( 'init', 'wpdispensary_coupons', 0 );
+
+}
+
+if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	
+/**
+ * Flowers Coupons
+ *
+ * Adds the option to select a Flower in the Dispensary Coupons custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Flowers {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'flowers';
+	var $SELECT_POST_LABEL = 'Flower';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Flower', 'wpd-coupons' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			$fieldflowers = sanitize_text_field( $_POST['selected_flowers'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldflowers );
+		}
+	}
+}
+new Coupons_Flowers();
+
+/**
+ * Edibles Coupons
+ *
+ * Adds the option to select an Edible in the Dispensary Coupons custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Edibles {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'edibles';
+	var $SELECT_POST_LABEL = 'Edible';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Edible', 'wpd-coupons' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			$fieldedibles = sanitize_text_field( $_POST['selected_edibles'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldedibles );
+		}
+	}
+}
+new Coupons_Edibles();
+
+/**
+ * Concentrates Coupons
+ *
+ * Adds the option to select a Concentrate in the Dispensary Coupons custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Concentrates {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'concentrates';
+	var $SELECT_POST_LABEL = 'Concentrate';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Concentrate', 'wpd-coupons' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			$fieldconcentrates = sanitize_text_field( $_POST['selected_concentrates'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldconcentrates );
+		}
+	}
+}
+new Coupons_Concentrates();
+
+/**
+ * Pre-rolls Coupons
+ *
+ * Adds the option to select a Pre-roll in the Dispensary Coupons custom post type
+ *
+ * @since    1.0.0
+ */
+
+class Coupons_Prerolls {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'prerolls';
+	var $SELECT_POST_LABEL = 'Pre-roll';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Pre-roll', 'wpd-coupons' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			$fieldprerolls = sanitize_text_field( $_POST['selected_prerolls'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldprerolls );
+		}
+	}
+}
+new Coupons_Prerolls();
 
 }
 
@@ -200,6 +432,31 @@ class wpdcoupons_widget extends WP_Widget {
 						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
 					}
+					
+					if('on' == $instance['couponproduct'] ) {
+						/** Display products that the coupon applies to */
+						$couponflower = get_post_meta( get_the_id(), '_selected_flowers', true );
+						$couponedible = get_post_meta( get_the_id(), '_selected_edibles', true );
+						$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+						$couponpreroll = get_post_meta( get_the_id(), '_selected_prerolls', true );
+						
+						echo "<span class='wpd-coupons-plugin-meta-item'>";
+						
+						if ( ! $couponflower == '' ) {
+							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+						}
+						if ( ! $couponedible == '' ) {
+							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+						}
+						if ( ! $couponconcentrate == '' ) {
+							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+						}
+						if ( ! $couponpreroll == '' ) {
+							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+						}
+						
+						echo "</span>";
+					}
 
 					echo "</div>";
 
@@ -233,6 +490,7 @@ class wpdcoupons_widget extends WP_Widget {
         $instance['limit']   			= strip_tags( $new_instance['limit'] );
         $instance['coupontitle']		= $new_instance['coupontitle'];
         $instance['coupondetails']		= $new_instance['coupondetails'];
+		$instance['couponproduct']		= $new_instance['couponproduct'];
         $instance['viewall']			= $new_instance['viewall'];
         $instance['viewallurl']			= $new_instance['viewallurl'];
 
@@ -255,6 +513,7 @@ class wpdcoupons_widget extends WP_Widget {
             'limit'  			=> '5',
             'coupontitle' 		=> '',
             'coupondetails' 	=> '',
+            'couponproduct' 	=> '',
 			'viewall'			=> '',
 			'viewallurl'		=> ''
         );
@@ -280,6 +539,13 @@ class wpdcoupons_widget extends WP_Widget {
 			<input class="checkbox" type="checkbox" <?php checked($instance['coupondetails'], 'on'); ?> id="<?php echo $this->get_field_id('coupondetails'); ?>" name="<?php echo $this->get_field_name('coupondetails'); ?>" /> 
 			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php _e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
         </p>
+
+		<?php if( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
+	    <p>
+			<input class="checkbox" type="checkbox" <?php checked($instance['couponproduct'], 'on'); ?> id="<?php echo $this->get_field_id('couponproduct'); ?>" name="<?php echo $this->get_field_name('couponproduct'); ?>" /> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display products this coupon applies to?', 'wpd-coupons' ); ?></label>
+        </p>
+		<?php } ?>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['viewall'], 'on'); ?> id="<?php echo $this->get_field_id('viewall'); ?>" name="<?php echo $this->get_field_name('viewall'); ?>" /> 
@@ -322,36 +588,62 @@ function wpdcoupons_shortcode( $atts ) {
 		'limit' => '5',
 		'title' => 'yes',
 		'details' => 'yes',
+		'products' => 'yes'
 	), $atts ) );
 
 	ob_start();
 	
-			$wpdispensary_coupons_shortcode = new WP_Query(
-				array(
-					'post_type' => 'coupons',
-					'showposts' => $limit
-				)
-			);
+		$wpdispensary_coupons_shortcode = new WP_Query(
+			array(
+				'post_type' => 'coupons',
+				'showposts' => $limit
+			)
+		);
 
-			while ( $wpdispensary_coupons_shortcode->have_posts() ) : $wpdispensary_coupons_shortcode->the_post();
+		while ( $wpdispensary_coupons_shortcode->have_posts() ) : $wpdispensary_coupons_shortcode->the_post();
+		
+		$do_not_duplicate = $post->ID;
+		
+			echo "<div class='wpd-coupons-plugin-meta'>";
+
+			if ( 'yes' == $title ) {
+				/** Display coupon title */
+				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
+			}
 			
-			$do_not_duplicate = $post->ID;
-			
-					echo "<div class='wpd-coupons-plugin-meta'>";
+			if ( 'yes' == $details ) {
+				/** Display coupon details */
+				echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
+			}
 
-					if ( 'yes' == $title ) {
-						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
-					}
-					
-					if ( 'yes' == $details ) {
-						/** Display coupon details */
-						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
-					}
+			if('yes' == $products ) {
+				/** Display products that the coupon applies to */
+				$couponflower = get_post_meta( get_the_id(), '_selected_flowers', true );
+				$couponedible = get_post_meta( get_the_id(), '_selected_edibles', true );
+				$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+				$couponpreroll = get_post_meta( get_the_id(), '_selected_prerolls', true );
+				
+				echo "<span class='wpd-coupons-plugin-meta-item'>";
+				
+				if ( ! $couponflower == '' ) {
+					echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+				}
+				if ( ! $couponedible == '' ) {
+					echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+				}
+				if ( ! $couponconcentrate == '' ) {
+					echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+				}
+				if ( ! $couponpreroll == '' ) {
+					echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+				}
+				
+				echo "</span>";
+			}
 
-					echo "</div>";
+			echo "</div>";
 
-			endwhile; // end loop
+		endwhile; // end loop
 
 	$output_string = ob_get_contents();
 	ob_end_clean();

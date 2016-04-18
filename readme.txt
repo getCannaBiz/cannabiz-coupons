@@ -1,9 +1,9 @@
 === Dispensary Coupons ===
 Contributors: deviodigital
-Tags: dispensary, cannabis, coupons, marijuana, wp dispensary
+Tags: dispensary, cannabis, coupons, marijuana, wp dispensary, mmj, weed, discounts
 Requires at least: 3.0
-Tested up to: 4.4.2
-Stable tag: 0.1
+Tested up to: 4.5
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -11,11 +11,17 @@ Easily add and display coupons for your marijuana dispensary business.
 
 == Description ==
 
-Easily add and display coupons for your marijuana dispensary business.
+The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](http://www.wpdispensary.com) menu management plugin.
+
+With this plugin you can add coupons to your website and show them off with a shortcode or widget.
+
+When adding new coupons to your website, you'll be able to select what items in your dispensary menu the coupon is be good for, and this information will be added to the coupon display.
 
 **Requirements**
 
-Although not required, Dispensary Coupons was built with the [WP Dispensary](http://www.wpdispensary.com) plugin to be installed and activated in order to work and does offer some added functionality for websites that are running the WPD plugin.
+Although not required, Dispensary Coupons was built with the [WP Dispensary](http://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
+
+If you do not have WP Dispensary installed, don't worry because Dispensary Coupons will still let you add coupons and display them on your website, without any mention of the WPD plugin whatsoever.
 
 ** Contribute **
 
