@@ -109,11 +109,7 @@ if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins
 /**
  * Flowers Coupons
  *
-<<<<<<< HEAD
  * Adds the option to select a Flower in the Dispensary Coupons custom post type
-=======
- * Adds the Prices metabox to all the flower custom post type
->>>>>>> origin/master
  *
  * @since    1.0.0
  */
@@ -138,13 +134,8 @@ class Coupons_Flowers {
 		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
 		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
 		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
-<<<<<<< HEAD
 		$this->box_label    = __( 'Apply Coupon to Flower', 'wpd-coupons' );
 		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
-=======
-		$this->box_label    = __( 'Apply Coupon to Flower', 'wp-dispensary' );
-		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
->>>>>>> origin/master
 	}
 	function add_meta_boxes() {
 		add_meta_box(
@@ -171,12 +162,8 @@ class Coupons_Flowers {
 	}
 	function save_post( $post_id, $post ) {
 		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
-<<<<<<< HEAD
 			$fieldflowers = sanitize_text_field( $_POST['selected_flowers'] );
 			update_post_meta( $post_id, $this->meta_key, $fieldflowers );
-=======
-			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
->>>>>>> origin/master
 		}
 	}
 }
@@ -185,11 +172,7 @@ new Coupons_Flowers();
 /**
  * Edibles Coupons
  *
-<<<<<<< HEAD
  * Adds the option to select an Edible in the Dispensary Coupons custom post type
-=======
- * Adds the Prices metabox to the Dispensary Coupons cutom post type
->>>>>>> origin/master
  *
  * @since    1.0.0
  */
@@ -214,13 +197,8 @@ class Coupons_Edibles {
 		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
 		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
 		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
-<<<<<<< HEAD
 		$this->box_label    = __( 'Apply Coupon to Edible', 'wpd-coupons' );
 		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
-=======
-		$this->box_label    = __( 'Apply Coupon to Edible', 'wp-dispensary' );
-		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
->>>>>>> origin/master
 	}
 	function add_meta_boxes() {
 		add_meta_box(
@@ -247,12 +225,8 @@ class Coupons_Edibles {
 	}
 	function save_post( $post_id, $post ) {
 		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
-<<<<<<< HEAD
 			$fieldedibles = sanitize_text_field( $_POST['selected_edibles'] );
 			update_post_meta( $post_id, $this->meta_key, $fieldedibles );
-=======
-			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
->>>>>>> origin/master
 		}
 	}
 }
@@ -261,11 +235,7 @@ new Coupons_Edibles();
 /**
  * Concentrates Coupons
  *
-<<<<<<< HEAD
  * Adds the option to select a Concentrate in the Dispensary Coupons custom post type
-=======
- * Adds the Prices metabox to all the concentrate custom post type
->>>>>>> origin/master
  *
  * @since    1.0.0
  */
@@ -290,13 +260,8 @@ class Coupons_Concentrates {
 		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
 		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
 		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
-<<<<<<< HEAD
 		$this->box_label    = __( 'Apply Coupon to Concentrate', 'wpd-coupons' );
 		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
-=======
-		$this->box_label    = __( 'Apply Coupon to Concentrate', 'wp-dispensary' );
-		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
->>>>>>> origin/master
 	}
 	function add_meta_boxes() {
 		add_meta_box(
@@ -323,12 +288,8 @@ class Coupons_Concentrates {
 	}
 	function save_post( $post_id, $post ) {
 		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
-<<<<<<< HEAD
 			$fieldconcentrates = sanitize_text_field( $_POST['selected_concentrates'] );
 			update_post_meta( $post_id, $this->meta_key, $fieldconcentrates );
-=======
-			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
->>>>>>> origin/master
 		}
 	}
 }
@@ -337,11 +298,7 @@ new Coupons_Concentrates();
 /**
  * Pre-rolls Coupons
  *
-<<<<<<< HEAD
  * Adds the option to select a Pre-roll in the Dispensary Coupons custom post type
-=======
- * Adds the Prices metabox to all the pre-roll custom post type
->>>>>>> origin/master
  *
  * @since    1.0.0
  */
@@ -366,13 +323,8 @@ class Coupons_Prerolls {
 		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
 		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
 		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
-<<<<<<< HEAD
 		$this->box_label    = __( 'Apply Coupon to Pre-roll', 'wpd-coupons' );
 		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
-=======
-		$this->box_label    = __( 'Apply Coupon to Pre-roll', 'wp-dispensary' );
-		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wp-dispensary' );
->>>>>>> origin/master
 	}
 	function add_meta_boxes() {
 		add_meta_box(
@@ -399,12 +351,8 @@ class Coupons_Prerolls {
 	}
 	function save_post( $post_id, $post ) {
 		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
-<<<<<<< HEAD
 			$fieldprerolls = sanitize_text_field( $_POST['selected_prerolls'] );
 			update_post_meta( $post_id, $this->meta_key, $fieldprerolls );
-=======
-			update_post_meta( $post_id, $this->meta_key, $_POST[ $this->field_name ] );
->>>>>>> origin/master
 		}
 	}
 }
@@ -663,7 +611,6 @@ function wpdcoupons_shortcode( $atts ) {
 				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
 			}
 			
-<<<<<<< HEAD
 			if ( 'yes' == $details ) {
 				/** Display coupon details */
 				echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
@@ -697,48 +644,6 @@ function wpdcoupons_shortcode( $atts ) {
 			echo "</div>";
 
 		endwhile; // end loop
-=======
-					echo "<div class='wpd-coupons-plugin-meta'>";
-
-					if ( 'yes' == $title ) {
-						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
-					}
-					
-					if ( 'yes' == $details ) {
-						/** Display coupon details */
-						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
-					}
-
-					if('yes' == $products ) {
-						/** Display products that the coupon applies to */
-						$couponflower = get_post_meta( get_the_id(), '_selected_flowers', true );
-						$couponedible = get_post_meta( get_the_id(), '_selected_edibles', true );
-						$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
-						$couponpreroll = get_post_meta( get_the_id(), '_selected_prerolls', true );
-						
-						echo "<span class='wpd-coupons-plugin-meta-item'>";
-						
-						if ( ! $couponflower == '' ) {
-							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
-						}
-						if ( ! $couponedible == '' ) {
-							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
-						}
-						if ( ! $couponconcentrate == '' ) {
-							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
-						}
-						if ( ! $couponpreroll == '' ) {
-							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
-						}
-						
-						echo "</span>";
-					}
-
-					echo "</div>";
-
-			endwhile; // end loop
->>>>>>> origin/master
 
 	$output_string = ob_get_contents();
 	ob_end_clean();
