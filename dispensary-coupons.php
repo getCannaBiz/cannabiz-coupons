@@ -2,7 +2,7 @@
 /**
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
- * Description:	Easily add coupons to your dispensary website, brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
+ * Description:	Easily add coupons to your dispensary website. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
  * Version:		1.0
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
