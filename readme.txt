@@ -37,7 +37,7 @@ Here is the shortcode with all options included:
 
 If you'd like to hide the title, details or products, you can change **yes** to **no** in the shortcode example above.
 
-** Contribute **
+**Contribute**
 
 Want to help this plugin get better? Head over to [Github](https://github.com/deviodigital/dispensary-coupons) and open an issue or submit a pull request.
 
