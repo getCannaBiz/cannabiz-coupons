@@ -3,7 +3,7 @@ Contributors: deviodigital
 Tags: dispensary, cannabis, coupons, marijuana, wp dispensary, mmj, weed, discounts
 Requires at least: 3.0
 Tested up to: 4.5
-Stable tag: 1.0
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -54,6 +54,9 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.1.0 =
+* Added support for new Topicals menu type in [WP Dispensary 1.4](http://www.wpdispensary.com/wp-dispensary-version-1-4/)
 
 = 1.0 =
 * Initial release
