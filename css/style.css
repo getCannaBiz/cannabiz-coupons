@@ -11,6 +11,7 @@
 
 .wpd-coupons-plugin-meta {
 	border: 2px dashed #eee;
+	display: inline-block;
 	margin: 0 0 12px 0;
 	padding: 6px 12px;
 	position: relative;
