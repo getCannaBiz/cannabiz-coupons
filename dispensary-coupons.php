@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		1.1.0
+ * Version:		1.1.1
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -690,6 +690,7 @@ function wpdcoupons_shortcode( $atts ) {
 				$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
 				$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
 				$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
+				$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
 				
 				echo "<span class='wpd-coupons-plugin-meta-item'>";
 				
@@ -704,6 +705,9 @@ function wpdcoupons_shortcode( $atts ) {
 				}
 				if ( ! $couponpreroll == '' ) {
 					echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+				}
+				if ( ! $coupontopical == '' ) {
+					echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
 				}
 				
 				echo "</span>";
