@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		1.1.1
+ * Version:		1.2
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -487,6 +487,11 @@ class wpdcoupons_widget extends WP_Widget {
 			
 					echo "<div class='wpd-coupons-plugin-meta'>";
 
+					if('on' == $instance['couponimage'] ) {
+						/** Display coupon featured image */
+						echo the_post_thumbnail( 'medium' );
+					}
+
 					if('on' == $instance['coupontitle'] ) {
 						/** Display coupon title */
 						echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
@@ -557,6 +562,7 @@ class wpdcoupons_widget extends WP_Widget {
         $instance['title']      		= strip_tags( $new_instance['title'] );
         $instance['limit']   			= strip_tags( $new_instance['limit'] );
         $instance['coupontitle']		= $new_instance['coupontitle'];
+        $instance['couponimage']		= $new_instance['couponimage'];
         $instance['coupondetails']		= $new_instance['coupondetails'];
 		$instance['couponproduct']		= $new_instance['couponproduct'];
         $instance['viewall']			= $new_instance['viewall'];
@@ -577,11 +583,12 @@ class wpdcoupons_widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'title'  		    => 'Dispensary Coupons',
-            'limit'  			=> '5',
-            'coupontitle' 		=> '',
-            'coupondetails' 	=> '',
-            'couponproduct' 	=> '',
+            'title'				=> 'Dispensary Coupons',
+            'limit'				=> '5',
+            'coupontitle'		=> '',
+            'couponimage'		=> '',
+            'coupondetails'		=> '',
+            'couponproduct'		=> '',
 			'viewall'			=> '',
 			'viewallurl'		=> ''
         );
@@ -601,6 +608,11 @@ class wpdcoupons_widget extends WP_Widget {
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked($instance['coupontitle'], 'on'); ?> id="<?php echo $this->get_field_id('coupontitle'); ?>" name="<?php echo $this->get_field_name('coupontitle'); ?>" /> 
 			<label for="<?php echo esc_attr( $this->get_field_id( 'coupontitle' ) ); ?>"><?php _e( 'Display coupon title?', 'wpd-coupons' ); ?></label>
+        </p>
+
+	    <p>
+			<input class="checkbox" type="checkbox" <?php checked($instance['couponimage'], 'on'); ?> id="<?php echo $this->get_field_id('couponimage'); ?>" name="<?php echo $this->get_field_name('couponimage'); ?>" /> 
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponimage' ) ); ?>"><?php _e( 'Display coupon featured image?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
@@ -653,10 +665,11 @@ add_action( 'widgets_init', 'wpdcoupons_register_widget' );
 function wpdcoupons_shortcode( $atts ) {
 
 	extract(shortcode_atts( array(
-		'limit' => '5',
-		'title' => 'yes',
-		'details' => 'yes',
-		'products' => 'yes'
+		'limit'		=> '5',
+		'image'		=> 'yes',
+		'title'		=> 'yes',
+		'details'	=> 'yes',
+		'products'	=> 'yes'
 	), $atts ) );
 
 	ob_start();
@@ -672,8 +685,13 @@ function wpdcoupons_shortcode( $atts ) {
 		
 		$do_not_duplicate = $post->ID;
 		
-			echo "<div class='wpd-coupons-plugin-meta'>";
+			echo "<div class='wpd-coupons-plugin-meta shortcode'>";
 
+			if ( 'yes' == $image ) {
+				/** Display coupon featured image */
+				echo the_post_thumbnail( 'thumbnail' );
+			}
+			
 			if ( 'yes' == $title ) {
 				/** Display coupon title */
 				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";

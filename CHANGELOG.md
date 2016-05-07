@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.2
+* Added new shortcode and widget options to show or hide the featured image of your dispensary coupon
+
 ### 1.1.1
 * Added missing shortcode support for new Topicals menu type in [WP Dispensary 1.4](http://www.wpdispensary.com/wp-dispensary-version-1-4/)
 * Updated CSS for `wpd-coupons-plugin-meta` class in `css/style.css`

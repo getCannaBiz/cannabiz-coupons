@@ -3,7 +3,7 @@ Contributors: deviodigital
 Tags: dispensary, cannabis, coupons, marijuana, wp dispensary, mmj, weed, discounts
 Requires at least: 3.0
 Tested up to: 4.5.2
-Stable tag: 1.1.1
+Stable tag: 1.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,9 +33,9 @@ You can display your dispensary coupons by adding the following shortcode:
 
 Here is the shortcode with all options included:
 
-`[wpd-coupons limit="5" title="yes" details="yes" products="yes"]`
+`[wpd-coupons limit="5" image="yes" title="yes" details="yes" products="yes"]`
 
-If you'd like to hide the title, details or products, you can change **yes** to **no** in the shortcode example above.
+If you'd like to hide the title, details, products or image, you can change **yes** to **no** in the shortcode example above.
 
 **Contribute**
 
@@ -54,6 +54,9 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.2 =
+* Added new shortcode and widget options to show or hide the featured image of your dispensary coupon
 
 = 1.1.1 =
 * Added missing shortcode support for new Topicals menu type in [WP Dispensary 1.4](http://www.wpdispensary.com/wp-dispensary-version-1-4/)

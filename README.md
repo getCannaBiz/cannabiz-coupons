@@ -20,7 +20,7 @@ You can display your dispensary coupons by adding the following shortcode:
 
 Here is the shortcode with all options included:
 
-`[wpd-coupons limit="5" title="yes" details="yes" products="yes"]`
+`[wpd-coupons limit="5" image="yes" title="yes" details="yes" products="yes"]`
 
 If you'd like to hide the title, details or products, you can change **yes** to **no** in the shortcode example above.
 

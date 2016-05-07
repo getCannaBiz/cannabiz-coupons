@@ -27,3 +27,12 @@
 .wpd-coupons-plugin-meta-item.fineprint {
 	color: #ccc;
 }
+
+.wpd-coupons-plugin-meta img {
+	margin: 6px 0;
+}
+
+.wpd-coupons-plugin-meta.shortcode img {
+	float: right;
+	margin: 6px 0 6px 12px;
+}
