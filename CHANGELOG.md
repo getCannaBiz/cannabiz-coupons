@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.3
+* Added option to select an item from the Growers menu type that was added in [WP Dispensary 1.7](http://www.wpdispensary.com/wp-dispensary-version-1-7/)
+
 ### 1.2
 * Added new shortcode and widget options to show or hide the featured image of your dispensary coupon
 

@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		1.2
+ * Version:		1.3
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -424,6 +424,69 @@ new Coupons_Topicals();
 
 }
 
+/**
+ * Growers Coupons
+ *
+ * Adds the option to select a Grower in the Dispensary Coupons custom post type
+ *
+ * @since    1.3.0
+ */
+
+class Coupons_Growers {
+	var $FOR_POST_TYPE = 'coupons';
+	var $SELECT_POST_TYPE = 'growers';
+	var $SELECT_POST_LABEL = 'Grower';
+	var $box_id;
+	var $box_label;
+	var $field_id;
+	var $field_label;
+	var $field_name;
+	var $meta_key;
+	function __construct() {
+		add_action( 'admin_init', array( $this, 'admin_init' ) );
+	}
+	function admin_init() {
+		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
+		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label    = __( 'Apply Coupon to Grower', 'wpd-coupons' );
+		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+	}
+	function add_meta_boxes() {
+		add_meta_box(
+			$this->box_id,
+			$this->box_label,
+			array( $this, 'select_box' ),
+			$this->FOR_POST_TYPE,
+			'side'
+		);
+	}
+	function select_box( $post ) {
+		$selected_post_id = get_post_meta( $post->ID, $this->meta_key, true );
+		global $wp_post_types;
+		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
+		wp_dropdown_pages( array(
+			'id' => $this->field_id,
+			'name' => $this->field_name,
+			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type' => $this->SELECT_POST_TYPE,
+			'show_option_none' => $this->field_label,
+		));
+		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
+	}
+	function save_post( $post_id, $post ) {
+		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
+			$fieldflowers = sanitize_text_field( $_POST['selected_growers'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldflowers );
+		}
+	}
+}
+new Coupons_Growers();
+
 
 /**
  * Dispensary Coupons Widget
@@ -509,6 +572,7 @@ class wpdcoupons_widget extends WP_Widget {
 						$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
 						$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
 						$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
+						$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
 						
 						echo "<span class='wpd-coupons-plugin-meta-item'>";
 						
@@ -526,6 +590,9 @@ class wpdcoupons_widget extends WP_Widget {
 						}
 						if ( ! $coupontopical == '' ) {
 							echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
+						}
+						if ( ! $coupongrower == '' ) {
+							echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
 						}
 						
 						echo "</span>";
@@ -709,7 +776,8 @@ function wpdcoupons_shortcode( $atts ) {
 				$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
 				$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
 				$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
-				
+				$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
+
 				echo "<span class='wpd-coupons-plugin-meta-item'>";
 				
 				if ( ! $couponflower == '' ) {
@@ -727,7 +795,10 @@ function wpdcoupons_shortcode( $atts ) {
 				if ( ! $coupontopical == '' ) {
 					echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
 				}
-				
+				if ( ! $coupongrower == '' ) {
+					echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
+				}
+
 				echo "</span>";
 			}
 

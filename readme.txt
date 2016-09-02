@@ -2,8 +2,8 @@
 Contributors: deviodigital
 Tags: dispensary, cannabis, coupons, marijuana, wp dispensary, mmj, weed, discounts
 Requires at least: 3.0
-Tested up to: 4.5.2
-Stable tag: 1.2
+Tested up to: 4.6
+Stable tag: 1.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 
 == Changelog ==
 
+= 1.3 =
+* Added option to select an item from the Growers menu type that was added in [WP Dispensary 1.7](http://www.wpdispensary.com/wp-dispensary-version-1-7/)
+
 = 1.2 =
 * Added new shortcode and widget options to show or hide the featured image of your dispensary coupon
 
@@ -66,4 +69,7 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 * Added support for new Topicals menu type in [WP Dispensary 1.4](http://www.wpdispensary.com/wp-dispensary-version-1-4/)
 
 = 1.0 =
+* Stable release
+
+= 0.1.0 =
 * Initial release
