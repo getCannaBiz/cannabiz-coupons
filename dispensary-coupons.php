@@ -3,7 +3,7 @@
  * Plugin Name:	Dispensary Coupons
  * Plugin URI:	http://www.wpdispensary.com/
  * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
- * Version:		1.3
+ * Version:		1.4
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
@@ -751,6 +751,15 @@ function wpdcoupons_shortcode( $atts ) {
 		while ( $wpdispensary_coupons_shortcode->have_posts() ) : $wpdispensary_coupons_shortcode->the_post();
 		
 		$do_not_duplicate = $post->ID;
+
+		/** Display products that the coupon applies to */
+		$couponflower		= get_post_meta( get_the_id(), '_selected_flowers', true );
+		$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
+		$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
+		$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
+		$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
+		$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
+
 		
 			echo "<div class='wpd-coupons-plugin-meta shortcode'>";
 
@@ -770,13 +779,6 @@ function wpdcoupons_shortcode( $atts ) {
 			}
 
 			if('yes' == $products ) {
-				/** Display products that the coupon applies to */
-				$couponflower		= get_post_meta( get_the_id(), '_selected_flowers', true );
-				$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
-				$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
-				$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
-				$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
-				$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
 
 				echo "<span class='wpd-coupons-plugin-meta-item'>";
 				
@@ -814,3 +816,203 @@ function wpdcoupons_shortcode( $atts ) {
 }
 
 add_shortcode( 'wpd-coupons', 'wpdcoupons_shortcode' );
+
+
+/**
+ * Add Action Hook
+ *
+ * @since       1.4.0
+ */
+add_action( 'wpd_pricingoutput_bottom', 'wpd_coupons_pricing' );
+
+function wpd_coupons_pricing() {
+?>
+
+<?php if ( in_array( get_post_type(), array( 'flowers' ) ) ) {
+	
+	global $post;
+	$flowerid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_flowers',
+		'meta_value' => $flowerid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$flower_coupons = new WP_Query( $args );
+	if ( $flower_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $flower_coupons->have_posts() ) : $flower_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Flower ?>
+
+<?php if ( in_array( get_post_type(), array( 'edibles' ) ) ) {
+	
+	global $post;
+	$edibleid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_edibles',
+		'meta_value' => $edibleid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$edible_coupons = new WP_Query( $args );
+	if ( $edible_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $edible_coupons->have_posts() ) : $edible_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Edible ?>
+
+<?php if ( in_array( get_post_type(), array( 'concentrates' ) ) ) {
+	
+	global $post;
+	$concentrateid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_concentrates',
+		'meta_value' => $concentrateid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$concentrate_coupons = new WP_Query( $args );
+	if ( $concentrate_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $concentrate_coupons->have_posts() ) : $concentrate_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Concentrate ?>
+
+<?php if ( in_array( get_post_type(), array( 'prerolls' ) ) ) {
+	
+	global $post;
+	$prerollid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_prerolls',
+		'meta_value' => $prerollid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$preroll_coupons = new WP_Query( $args );
+	if ( $preroll_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $preroll_coupons->have_posts() ) : $preroll_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Preroll ?>
+
+<?php if ( in_array( get_post_type(), array( 'topicals' ) ) ) {
+	
+	global $post;
+	$topicalid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_topicals',
+		'meta_value' => $topicalid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$topical_coupons = new WP_Query( $args );
+	if ( $topical_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $topical_coupons->have_posts() ) : $topical_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Topical ?>
+
+<?php if ( in_array( get_post_type(), array( 'growers' ) ) ) {
+	
+	global $post;
+	$growerid = $post->ID;
+
+	$args = array(
+		'meta_key' => '_selected_growers',
+		'meta_value' => $growerid,
+		'post_type' => 'coupons',
+		'posts_per_page' => -1
+	);
+	$grower_coupons = new WP_Query( $args );
+	if ( $grower_coupons->have_posts() ) :
+
+	echo '<td class="wpd-coupons" colspan="6"><span>Current Coupons:</span> ';
+
+	while ( $grower_coupons->have_posts() ) : $grower_coupons->the_post();
+	?>
+	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+	<?php
+	endwhile;
+
+	echo '</td>';
+
+	endif;
+
+	// Reset Post Data
+	wp_reset_postdata(); ?>
+
+<?php } // if Grower ?>
+
+<?php }
+

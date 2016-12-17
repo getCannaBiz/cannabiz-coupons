@@ -2,16 +2,14 @@
 Contributors: deviodigital
 Tags: dispensary, cannabis, coupons, marijuana, wp dispensary, mmj, weed, discounts
 Requires at least: 3.0
-Tested up to: 4.6
-Stable tag: 1.3
+Tested up to: 4.7
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Easily add and display coupons for your marijuana dispensary.
 
 == Description ==
-
-![Dispensary Coupons] (http://www.robertdevore.com/wp-content/uploads/2016/03/dispensary-coupons-github.jpg)
 
 The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](http://www.wpdispensary.com) menu management plugin.
 
@@ -54,6 +52,9 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.4 =
+* Added action hook to display coupons on single menu items pages (action hooks added to WP Dispensary in version 1.8)
 
 = 1.3 =
 * Added option to select an item from the Growers menu type that was added in [WP Dispensary 1.7](http://www.wpdispensary.com/wp-dispensary-version-1-7/)
