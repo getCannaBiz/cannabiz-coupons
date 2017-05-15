@@ -502,15 +502,18 @@ class wpdcoupons_widget extends WP_Widget {
      * @since       1.0.0
      * @return      void
      */
-    public function wpdcoupons_widget() {
-        parent::WP_Widget(
-            false,
-            __( 'Dispensary Coupons', 'wpd-coupons' ),
-            array(
-                'description'  => __( 'Display your recent dispensary coupons.', 'wpd-coupons' )
-            )
-        );
-    }
+	public function __construct() {
+
+		parent::__construct(
+			'wpdcoupons_widget',
+			__( 'Dispensary Coupons', 'wpd-coupons' ),
+			array(
+				'description' => __( 'Display your recent dispensary coupons.', 'wpd-coupons' ),
+				'classname'   => 'wpd-coupons-widget',
+			)
+		);
+
+	}
 
     /**
      * Widget definition
@@ -534,6 +537,8 @@ class wpdcoupons_widget extends WP_Widget {
         if( $title ) {
             echo $args['before_title'] . $title . $args['after_title'];
         }
+
+		global $post;
 
         do_action( 'dispensary_coupons_before_widget' );
 		
@@ -606,6 +611,8 @@ class wpdcoupons_widget extends WP_Widget {
 					}
 
 			endwhile; // end loop
+
+			wp_reset_postdata();
 
         do_action( 'dispensary_coupons_after_widget' );
         
