@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:	Dispensary Coupons
- * Plugin URI:	http://www.wpdispensary.com/
- * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="http://www.wpdispensary.com">WP Dispensary</a> and <a href="http://www.deviodigital.com/">Devio Digital</a>.
+ * Plugin Name:	WP Dispensary's Coupons
+ * Plugin URI:	http://www.wpdispensary.com/add-ons/
+ * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="https://www.wpdispensary.com" target="_blank">WP Dispensary</a> and <a href="http://www.deviodigital.com/" target="_blank">Devio Digital</a>.
  * Version:		1.4
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
@@ -86,7 +86,7 @@ function wpdispensary_coupons() {
 		'hierarchical'          => false,
 		'public'                => true,
 		'show_ui'               => true,
-		'show_in_menu'          => true,
+		'show_in_menu'          => false,
 		'menu_position'         => 10,
 		'menu_icon'             => plugin_dir_url( __FILE__ ) . ( 'images/menu-icon.png' ),
 		'show_in_admin_bar'     => true,
@@ -103,6 +103,13 @@ function wpdispensary_coupons() {
 add_action( 'init', 'wpdispensary_coupons', 0 );
 
 }
+
+function dispensary_coupons_add_admin_menu() {
+//create a submenu under Settings
+	add_submenu_page( 'wpd-settings', 'WP Dispensary\'s Coupons', 'Coupons', 'manage_options', 'edit.php?post_type=coupons', NULL );
+}
+add_action( 'admin_menu', 'dispensary_coupons_add_admin_menu', 12 );
+
 
 if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 	
@@ -1022,4 +1029,3 @@ function wpd_coupons_pricing() {
 <?php } // if Grower ?>
 
 <?php }
-
