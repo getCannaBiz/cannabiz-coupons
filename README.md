@@ -1,4 +1,4 @@
-![Dispensary Coupons] (http://www.robertdevore.com/wp-content/uploads/2016/03/dispensary-coupons-github.jpg)
+# Dispensary Coupons, a WP Dispensary add-on
 
 The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](http://www.wpdispensary.com) menu management plugin.
 
