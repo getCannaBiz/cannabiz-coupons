@@ -513,9 +513,9 @@ class wpdcoupons_widget extends WP_Widget {
 
 		parent::__construct(
 			'wpdcoupons_widget',
-			__( 'Dispensary Coupons', 'wpd-coupons' ),
+			__( 'WP Dispensary\'s Coupons', 'wpd-coupons' ),
 			array(
-				'description' => __( 'Display your recent dispensary coupons.', 'wpd-coupons' ),
+				'description' => __( 'Display your WP Dispensary coupons.', 'wpd-coupons' ),
 				'classname'   => 'wpd-coupons-widget',
 			)
 		);
@@ -664,7 +664,7 @@ class wpdcoupons_widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'title'				=> 'Dispensary Coupons',
+            'title'				=> 'WP Dispensary\'s Coupons',
             'limit'				=> '5',
             'coupontitle'		=> '',
             'couponimage'		=> '',
