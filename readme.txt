@@ -19,8 +19,6 @@ When adding new coupons to your website, you'll be able to select what items in 
 
 **Requirements**
 
-**Requirements**
-
 Dispensary Coupons was built with the [WP Dispensary](http://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
 
 **Shortcode**
