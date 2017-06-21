@@ -562,22 +562,22 @@ class wpdcoupons_widget extends WP_Widget {
 			
 					echo "<div class='wpd-coupons-plugin-meta'>";
 
-					if('on' == $instance['couponimage'] ) {
+					if( 'on' == $instance['couponimage'] ) {
 						/** Display coupon featured image */
 						echo the_post_thumbnail( 'medium' );
 					}
 
-					if('on' == $instance['coupontitle'] ) {
+					if( 'on' == $instance['coupontitle'] ) {
 						/** Display coupon title */
 						echo "<span class='wpd-coupons-plugin-meta-item'><strong><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></strong></span>";
 					}
 					
-					if('on' == $instance['coupondetails'] ) {
+					if( 'on' == $instance['coupondetails'] ) {
 						/** Display coupon details */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
 					}
 					
-					if('on' == $instance['couponproduct'] ) {
+					if( 'on' == $instance['couponproduct'] ) {
 						/** Display products that the coupon applies to */
 						$couponflower		= get_post_meta( get_the_id(), '_selected_flowers', true );
 						$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
@@ -612,7 +612,7 @@ class wpdcoupons_widget extends WP_Widget {
 
 					echo "</div>";
 
-					if('on' == $instance['viewall'] ) {
+					if( 'on' == $instance['viewall'] ) {
 						/** Display link to all coupons */
 						echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='". $instance['viewallurl'] ."' target='_blank'>View all coupons &rarr;</a></span></p>";
 					}
