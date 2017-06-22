@@ -54,6 +54,7 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 = 1.5 =
 * Updated `Coupons` menu placement to be a sub-menu under WP Dispensary **requires version 1.9.8+ of WP Dispensary**
 * Updated widget title size from `h3` to `strong` to make the text more uniformly sized.
+* Updated the widget name to "WP Dispensary's Coupons"
 
 = 1.4 =
 * Added action hook to display coupons on single menu items pages (action hooks added to WP Dispensary in [WP Dispensary 1.8](http://www.wpdispensary.com/wp-dispensary-version-1-8/))
