@@ -786,7 +786,7 @@ function wpdcoupons_shortcode( $atts ) {
 				/** Display coupon title */
 				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
 			}
-			
+
 			if ( 'yes' == $details ) {
 				/** Display coupon details */
 				echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
