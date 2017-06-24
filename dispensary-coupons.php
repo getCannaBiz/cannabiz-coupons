@@ -568,6 +568,12 @@ class wpdcoupons_widget extends WP_Widget {
 						the_post_thumbnail( 'medium' );
 						echo "</a>";
 					}
+
+					$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
+					if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
+						$couponlink = " target='_blank'";
+					} else {
+						$couponlink = '';
 					}
 
 					if( 'on' == $instance['coupontitle'] ) {
