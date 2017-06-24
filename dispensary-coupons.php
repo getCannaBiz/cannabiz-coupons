@@ -774,6 +774,13 @@ function wpdcoupons_shortcode( $atts ) {
 		$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
 		$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
 
+		$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
+		if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
+			$couponlink = " target='_blank'";
+		} else {
+			$couponlink = '';
+		}
+
 			echo "<div class='wpd-coupons-plugin-meta shortcode'>";
 
 			if ( 'yes' == $image ) {
