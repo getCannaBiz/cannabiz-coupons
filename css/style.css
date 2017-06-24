@@ -41,6 +41,11 @@
 	margin: 6px 0 6px 12px;
 }
 
+.wpd-coupons-plugin-meta.shortcode img.emoji {
+    float: none;
+	margin: 0;
+}
+
 @media screen and (max-width: 768px) {
 	td.wpd-coupons span {
 		display: block;
