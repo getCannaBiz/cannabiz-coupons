@@ -1029,3 +1029,14 @@ function wpd_coupons_pricing() {
 <?php } // if Grower ?>
 
 <?php }
+
+function activate_wpd_coupons() {
+	wpdispensary_coupons();
+
+	global $wp_rewrite;
+	$wp_rewrite->init();
+	$wp_rewrite->flush_rules();
+}
+
+// Registers the plugin activation hook.
+register_activation_hook( __FILE__, 'activate_wpd_coupons' );
