@@ -569,7 +569,7 @@ class wpdcoupons_widget extends WP_Widget {
 
 					if( 'on' == $instance['coupontitle'] ) {
 						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item'><strong><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></strong></span>";
+						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) ."'". $couponlink .">". get_the_title( $post->ID ) ."</a></strong></span>";
 					}
 					
 					if( 'on' == $instance['coupondetails'] ) {
