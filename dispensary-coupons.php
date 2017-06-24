@@ -560,7 +560,6 @@ class wpdcoupons_widget extends WP_Widget {
 			
 			$do_not_duplicate = $post->ID;
 			
-					echo "<div class='wpd-coupons-plugin-meta'>";
 			$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
 			if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
 				$couponlink = " target='_blank'";
