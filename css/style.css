@@ -24,6 +24,10 @@
 	padding: 0 !important;
 }
 
+.wpd-coupons-plugin-meta-item.title strong {
+	display: block;
+}
+
 .wpd-coupons-plugin-meta-item.fineprint {
 	color: #ccc;
 }
