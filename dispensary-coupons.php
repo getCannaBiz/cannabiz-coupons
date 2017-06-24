@@ -774,19 +774,18 @@ function wpdcoupons_shortcode( $atts ) {
 		$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
 		$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
 
-		
 			echo "<div class='wpd-coupons-plugin-meta shortcode'>";
 
 			if ( 'yes' == $image ) {
 				/** Display coupon featured image */
 				echo the_post_thumbnail( 'thumbnail' );
 			}
-			
+
 			if ( 'yes' == $title ) {
 				/** Display coupon title */
 				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
 			}
-
+			
 			if ( 'yes' == $details ) {
 				/** Display coupon details */
 				echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
