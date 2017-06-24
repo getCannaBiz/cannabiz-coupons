@@ -778,7 +778,9 @@ function wpdcoupons_shortcode( $atts ) {
 
 			if ( 'yes' == $image ) {
 				/** Display coupon featured image */
-				echo the_post_thumbnail( 'thumbnail' );
+				echo "<a ". $couponlink ." href='" . get_permalink( $post->ID ) ."'>";
+				the_post_thumbnail( 'thumbnail' );
+				echo "</a>";
 			}
 
 			if ( 'yes' == $title ) {
