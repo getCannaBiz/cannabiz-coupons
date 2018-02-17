@@ -108,7 +108,7 @@ function dispensary_coupons_add_admin_menu() {
 //create a submenu under Settings
 	add_submenu_page( 'wpd-settings', 'WP Dispensary\'s Coupons', 'Coupons', 'manage_options', 'edit.php?post_type=coupons', NULL );
 }
-add_action( 'admin_menu', 'dispensary_coupons_add_admin_menu', 12 );
+add_action( 'admin_menu', 'dispensary_coupons_add_admin_menu', 13 );
 
 
 if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
