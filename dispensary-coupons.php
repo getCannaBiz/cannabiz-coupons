@@ -513,7 +513,7 @@ class wpdcoupons_widget extends WP_Widget {
 
 		parent::__construct(
 			'wpdcoupons_widget',
-			__( 'WP Dispensary\'s Coupons', 'wpd-coupons' ),
+			__( 'Dispensary Coupons', 'wpd-coupons' ),
 			array(
 				'description' => __( 'Display your WP Dispensary coupons.', 'wpd-coupons' ),
 				'classname'   => 'wpd-coupons-widget',
