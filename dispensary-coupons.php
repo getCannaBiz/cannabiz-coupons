@@ -872,9 +872,9 @@ function wpd_coupons_pricing() {
 	$flowerid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_flowers',
-		'meta_value' => $flowerid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_flowers',
+		'meta_value'     => $flowerid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$flower_coupons = new WP_Query( $args );
@@ -903,9 +903,9 @@ function wpd_coupons_pricing() {
 	$edibleid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_edibles',
-		'meta_value' => $edibleid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_edibles',
+		'meta_value'     => $edibleid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$edible_coupons = new WP_Query( $args );
@@ -934,9 +934,9 @@ function wpd_coupons_pricing() {
 	$concentrateid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_concentrates',
-		'meta_value' => $concentrateid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_concentrates',
+		'meta_value'     => $concentrateid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$concentrate_coupons = new WP_Query( $args );
@@ -965,9 +965,9 @@ function wpd_coupons_pricing() {
 	$prerollid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_prerolls',
-		'meta_value' => $prerollid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_prerolls',
+		'meta_value'     => $prerollid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$preroll_coupons = new WP_Query( $args );
@@ -996,9 +996,9 @@ function wpd_coupons_pricing() {
 	$topicalid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_topicals',
-		'meta_value' => $topicalid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_topicals',
+		'meta_value'     => $topicalid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$topical_coupons = new WP_Query( $args );
@@ -1027,9 +1027,9 @@ function wpd_coupons_pricing() {
 	$growerid = $post->ID;
 
 	$args = array(
-		'meta_key' => '_selected_growers',
-		'meta_value' => $growerid,
-		'post_type' => 'coupons',
+		'meta_key'       => '_selected_growers',
+		'meta_value'     => $growerid,
+		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
 	$grower_coupons = new WP_Query( $args );
