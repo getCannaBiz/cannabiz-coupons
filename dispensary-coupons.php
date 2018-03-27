@@ -680,7 +680,7 @@ class wpdcoupons_widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'title'				=> 'WP Dispensary\'s Coupons',
+            'title'				=> 'Dispensary Coupons',
             'limit'				=> '5',
             'coupontitle'		=> '',
             'couponimage'		=> '',
