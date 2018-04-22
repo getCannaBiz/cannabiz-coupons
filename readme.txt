@@ -2,8 +2,8 @@
 Contributors: deviodigital
 Tags: dispensary, cannabis, marijuana, wp-dispensary, mmj, weed, coupons, discounts
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 1.5
+Tested up to: 4.9.5
+Stable tag: 1.5.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,12 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.5.1 =
+* Updated admin submenu order number
+* Updated <td> Coupons text in Pricing table
+* Updated the default widget title
+* General code clean up for easier reading
 
 = 1.5 =
 * Updated `Coupons` menu placement to be a sub-menu under WP Dispensary **requires version 1.9.8+ of WP Dispensary**

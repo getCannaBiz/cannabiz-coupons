@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.5.1
+* Coding Standards updates
+* Updated admin submenu order number **requires version 2.0+ of WP Dispensary**
+* Updated <td> `Coupons` text in Pricing table
+* Updated the default widget title
+
 ### 1.5
 * Updated `Coupons` menu placement to be a sub-menu under WP Dispensary **requires version 1.9.8+ of WP Dispensary**
 * Updated widget title size from `h3` to `strong` to make the text more uniformly sized.
