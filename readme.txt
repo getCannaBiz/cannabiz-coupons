@@ -1,5 +1,5 @@
 === Dispensary Coupons ===
-Contributors: deviodigital
+Contributors: deviodigital, wpdispensary
 Tags: dispensary, cannabis, marijuana, wp-dispensary, mmj, weed, coupons, discounts
 Requires at least: 3.0
 Tested up to: 4.9.5
