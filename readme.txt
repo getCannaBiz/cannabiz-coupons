@@ -2,8 +2,8 @@
 Contributors: deviodigital, wpdispensary
 Tags: dispensary, cannabis, marijuana, wp-dispensary, mmj, weed, coupons, discounts
 Requires at least: 3.0
-Stable tag: 1.5.1
 Tested up to: 4.9.8
+Stable tag: 1.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.5.2 =
+* Added Coupons Details metabox with coupon code and coupon expiration date
 
 = 1.5.1 =
 * Updated admin submenu order number

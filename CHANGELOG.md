@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.5.2
+* Added `Coupons Details` metabox with `coupon code` and `coupon exp. date`
+
 ### 1.5.1
 * Coding Standards updates
 * Updated admin submenu order number **requires version 2.0+ of WP Dispensary**
