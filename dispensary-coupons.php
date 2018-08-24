@@ -1054,6 +1054,103 @@ function wpd_coupons_pricing() {
 
 <?php }
 
+/**
+ * Coupon Details metabox
+ *
+ * Adds the coupon details metabox.
+ *
+ * @since    1.5.2
+ */
+function wpd_coupons_add_details_metaboxes() {
+	add_meta_box(
+		'wpd_coupons',
+		__( 'Coupon Details', 'wpd-coupons' ),
+		'wpd_coupon_details',
+		'coupons',
+		'side',
+		'default'
+	);
+}
+add_action( 'add_meta_boxes', 'wpd_coupons_add_details_metaboxes' );
+
+/**
+ * Building the metabox
+ */
+function wpd_coupon_details() {
+	global $post;
+
+	/** Noncename needed to verify where the data originated */
+	echo '<input type="hidden" name="wpd_coupons_details_meta_noncename" id="wpd_coupons_details_meta_noncename" value="' .
+	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
+
+	/** Get the thccbd data if its already been entered */
+	$wpd_coupon_code  = get_post_meta( $post->ID, 'wpd_coupon_code', true );
+	$wpd_coupon_exp   = get_post_meta( $post->ID, 'wpd_coupon_exp', true );
+
+	/** Echo out the fields */
+	echo '<div class="wpd-coupons-box">';
+	echo '<p>Coupon Code:</p>';
+	echo '<input type="text" name="wpd_coupon_code" value="' . esc_html( $wpd_coupon_code ) . '" class="widefat" />';
+	echo '</div>';
+
+	echo '<div class="wpd-coupons-box">';
+	echo '<p>Expiration Date:</p>';
+	echo '<input type="date" name="wpd_coupon_exp" value="' . esc_html( $wpd_coupon_exp ) . '" class="widefat" />';
+	echo '</div>';
+
+}
+
+/**
+ * Save the Metabox Data
+ */
+function wpd_coupons_save_details_meta( $post_id, $post ) {
+
+	/**
+	 * Verify this came from the our screen and with proper authorization,
+	 * because save_post can be triggered at other times
+	 */
+	if (
+		! isset( $_POST['wpd_coupons_details_meta_noncename' ] ) ||
+		! wp_verify_nonce( $_POST['wpd_coupons_details_meta_noncename'], plugin_basename( __FILE__ ) )
+	) {
+		return $post->ID;
+	}
+
+	/** Is the user allowed to edit the post or page? */
+	if ( ! current_user_can( 'edit_post', $post->ID ) ) {
+		return $post->ID;
+	}
+
+	/**
+	 * OK, we're authenticated: we need to find and save the data
+	 * We'll put it into an array to make it easier to loop though.
+	 */
+
+	$wpd_coupons_meta['wpd_coupon_code']  = $_POST['wpd_coupon_code'];
+	$wpd_coupons_meta['wpd_coupon_exp']   = $_POST['wpd_coupon_exp'];
+
+	/** Add values of $compounddetails_meta as custom fields */
+
+	foreach ( $wpd_coupons_meta as $key => $value ) { /** Cycle through the $wpd_coupons_meta array! */
+		if ( 'revision' === $post->post_type ) { /** Don't store custom data twice */
+			return;
+		}
+		$value = implode( ',', (array) $value ); // If $value is an array, make it a CSV (unlikely)
+		if ( get_post_meta( $post->ID, $key, false ) ) { // If the custom field already has a value.
+			update_post_meta( $post->ID, $key, $value );
+		} else { // If the custom field doesn't have a value.
+			add_post_meta( $post->ID, $key, $value );
+		}
+		if ( ! $value ) { /** Delete if blank */
+			delete_post_meta( $post->ID, $key );
+		}
+	}
+
+}
+add_action( 'save_post', 'wpd_coupons_save_details_meta', 1, 2 ); // Save the custom fields.
+
+
+// Registers the plugin activation hook.
 function activate_wpd_coupons() {
 	wpdispensary_coupons();
 
@@ -1061,6 +1158,4 @@ function activate_wpd_coupons() {
 	$wp_rewrite->init();
 	$wp_rewrite->flush_rules();
 }
-
-// Registers the plugin activation hook.
 register_activation_hook( __FILE__, 'activate_wpd_coupons' );
