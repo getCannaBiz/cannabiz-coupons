@@ -752,12 +752,12 @@ add_action( 'widgets_init', 'wpdcoupons_register_widget' );
 
 
 /**
- * DispensaryCoupons Shortcode
+ * Dispensary Coupons Shortcode
  *
  * @since		1.0.0
  * @param		array  $atts Shortcode attributes
  * @param		string  $content
- * @return		string  $return The DispensaryCoupons
+ * @return		string  $return The Dispensary Coupons shortcode
  */
 function wpdcoupons_shortcode( $atts ) {
 
