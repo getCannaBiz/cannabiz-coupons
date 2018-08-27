@@ -3,7 +3,7 @@
  * Plugin Name:	WP Dispensary's Coupons
  * Plugin URI:	http://www.wpdispensary.com/add-ons/
  * Description:	Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="https://www.wpdispensary.com" target="_blank">WP Dispensary</a> and <a href="http://www.deviodigital.com/" target="_blank">Devio Digital</a>.
- * Version:		1.5.1
+ * Version:		1.5.2
  * Author:		WP Dispensary
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons

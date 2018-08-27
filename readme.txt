@@ -52,7 +52,7 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 == Changelog ==
 
 = 1.5.2 =
-* Added Coupons Details metabox with coupon code and coupon expiration date
+* Added `Coupons Details` metabox with `wpd_coupon_code`, `wpd_coupon_amount`, `wpd_coupon_type` and `wpd_coupon_exp` options
 
 = 1.5.1 =
 * Updated admin submenu order number
