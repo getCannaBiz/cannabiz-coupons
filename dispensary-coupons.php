@@ -1084,13 +1084,40 @@ function wpd_coupon_details() {
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
 	/** Get the thccbd data if its already been entered */
-	$wpd_coupon_code  = get_post_meta( $post->ID, 'wpd_coupon_code', true );
-	$wpd_coupon_exp   = get_post_meta( $post->ID, 'wpd_coupon_exp', true );
+	$wpd_coupon_code   = get_post_meta( $post->ID, 'wpd_coupon_code', true );
+	$wpd_coupon_amount = get_post_meta( $post->ID, 'wpd_coupon_amount', true );
+	$wpd_coupon_type   = get_post_meta( $post->ID, 'wpd_coupon_type', true );
+	$wpd_coupon_exp    = get_post_meta( $post->ID, 'wpd_coupon_exp', true );
 
 	/** Echo out the fields */
 	echo '<div class="wpd-coupons-box">';
 	echo '<p>Coupon Code:</p>';
 	echo '<input type="text" name="wpd_coupon_code" value="' . esc_html( $wpd_coupon_code ) . '" class="widefat" />';
+	echo '</div>';
+
+	echo '<div class="wpd-coupons-box">';
+	echo '<p>Coupon Amount:</p>';
+	echo '<input type="text" name="wpd_coupon_amount" value="' . esc_html( $wpd_coupon_amount ) . '" class="widefat" />';
+	echo '</div>';
+
+	echo '<div class="wpd-coupons-box">';
+	echo '<p>Coupon Type:</p>';
+
+	$terms = array( 'Flat Rate', 'Percentage' );
+
+	if ( $terms ) {
+		printf( '<select name="wpd_coupon_type" id="wpd_coupon_type" class="widefat">' );
+		foreach ( $terms as $term ) {
+			if ( esc_html( $term ) != $wpd_coupon_type ) {
+				$coupon_type_selected = '';
+			} else {
+				$coupon_type_selected = 'selected="selected"';
+			}
+			printf( '<option value="%s" ' . esc_html( $coupon_type_selected ) . '>%s</option>', esc_html( $term ), esc_html( $term ) );
+		}
+		print( '</select>' );
+	}
+
 	echo '</div>';
 
 	echo '<div class="wpd-coupons-box">';
@@ -1126,8 +1153,10 @@ function wpd_coupons_save_details_meta( $post_id, $post ) {
 	 * We'll put it into an array to make it easier to loop though.
 	 */
 
-	$wpd_coupons_meta['wpd_coupon_code']  = $_POST['wpd_coupon_code'];
-	$wpd_coupons_meta['wpd_coupon_exp']   = $_POST['wpd_coupon_exp'];
+	$wpd_coupons_meta['wpd_coupon_code']   = $_POST['wpd_coupon_code'];
+	$wpd_coupons_meta['wpd_coupon_amount'] = $_POST['wpd_coupon_amount'];
+	$wpd_coupons_meta['wpd_coupon_type']   = $_POST['wpd_coupon_type'];
+	$wpd_coupons_meta['wpd_coupon_exp']    = $_POST['wpd_coupon_exp'];
 
 	/** Add values of $compounddetails_meta as custom fields */
 
