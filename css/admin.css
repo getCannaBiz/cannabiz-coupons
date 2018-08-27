@@ -27,3 +27,22 @@ div.widget[id*=_wpdcoupons_] .widget-title .in-widget-title {
 div.widget[id*=_wpdcoupons_] .widget-action {
 	color: #FFF;
 }
+
+/** Metabox - Coupon Details */
+
+#wpd_coupons .inside {
+    overflow: auto;
+}
+
+#wpd_coupons .inside .pricebox {
+	float: left;
+	position: relative;
+	width: 100%;
+}
+
+#postbox-container-2 #wpd_coupons .inside .wpd-coupons-box {
+	float: left;
+	margin: 10px 1%;
+	position: relative;
+	width: 23%;
+}
