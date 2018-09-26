@@ -1,6 +1,6 @@
 # Dispensary Coupons, a WP Dispensary add-on
 
-The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](http://www.wpdispensary.com) menu management plugin.
+The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](https://www.wpdispensary.com) menu management plugin.
 
 With this plugin you can add coupons to your website and show them off with a shortcode or widget.
 
@@ -8,7 +8,7 @@ When adding new coupons to your website, you'll be able to select what items in 
 
 **Requirements**
 
-Dispensary Coupons was built with the [WP Dispensary](http://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
+Dispensary Coupons was built with the [WP Dispensary](https://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
 
 **Shortcode**
 

@@ -1,5 +1,5 @@
 === Dispensary Coupons ===
-Contributors: deviodigital, wpdispensary
+Contributors: wpdispensary, deviodigital
 Tags: dispensary, cannabis, marijuana, wp-dispensary, mmj, weed, coupons, discounts
 Requires at least: 3.0
 Tested up to: 4.9.8
@@ -19,7 +19,7 @@ When adding new coupons to your website, you'll be able to select what items in 
 
 **Requirements**
 
-Dispensary Coupons was built with the [WP Dispensary](http://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
+Dispensary Coupons was built with the [WP Dispensary](https://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
 
 **Shortcode**
 

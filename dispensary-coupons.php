@@ -8,7 +8,7 @@
  * Author URI:	http://www.wpdispensary.com/
  * Text Domain: wpd-coupons
  *
- * @package		wpd-coupons
+ * @package		WPD_Coupons
  */
 
 /* Exit if accessed directly */
@@ -35,7 +35,7 @@ add_action( 'wp_enqueue_scripts', 'wpdcoupons_load_scripts' );
  * @return      void
  */
 function wpdcoupons_load_admin_scripts() {
-	wp_enqueue_style( 'wpdcoupons', plugin_dir_url( __FILE__ ) . 'css/admin.css' );
+	wp_enqueue_style( 'wpd-coupons', plugin_dir_url( __FILE__ ) . 'css/admin.css' );
 }
 add_action( 'admin_enqueue_scripts', 'wpdcoupons_load_admin_scripts' );
 
