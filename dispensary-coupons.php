@@ -39,6 +39,10 @@ function wpdcoupons_load_admin_scripts() {
 }
 add_action( 'admin_enqueue_scripts', 'wpdcoupons_load_admin_scripts' );
 
+/**
+ * The class responsible for creating custom permalinks
+ */
+require_once plugin_dir_path( __FILE__ ) . 'inc/class-dispensary-coupons-permalinks.php';
 
 /**
  * Coupons post type creation
@@ -49,6 +53,22 @@ if ( ! function_exists( 'wpdispensary_coupons' ) ) {
 
 /** Register Custom Post Type */
 function wpdispensary_coupons() {
+
+	$wpd_coupons_slug = get_option( 'wpd_coupons_slug' );
+
+	if ( '' == $wpd_coupons_slug ) {
+		$wpd_coupons_slug = 'coupons';
+	}
+
+	/**
+	 * Defining variables
+	 */
+	$rewrite = array(
+		'slug'       => $wpd_coupons_slug,
+		'with_front' => true,
+		'pages'      => true,
+		'feeds'      => true,
+	);
 
 	$labels = array(
 		'name'                  => _x( 'Coupons', 'Post Type General Name', 'wpd-coupons' ),
@@ -95,6 +115,7 @@ function wpdispensary_coupons() {
 		'has_archive'           => true,
 		'exclude_from_search'   => false,
 		'publicly_queryable'    => true,
+		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
 	);
 	register_post_type( 'coupons', $args );
