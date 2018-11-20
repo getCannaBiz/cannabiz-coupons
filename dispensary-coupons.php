@@ -101,7 +101,7 @@ function wpdispensary_coupons() {
 		'label'                 => __( 'Coupons', 'wpd-coupons' ),
 		'description'           => __( 'Display your dispensary coupons', 'wpd-coupons' ),
 		'labels'                => $labels,
-		'supports'              => array( 'title', 'editor', 'thumbnail', ),
+		'supports'              => array( 'title', 'thumbnail', ),
 		'taxonomies'            => array( ),
 		'hierarchical'          => false,
 		'public'                => true,
