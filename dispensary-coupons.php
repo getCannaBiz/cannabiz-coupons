@@ -114,7 +114,7 @@ function wpdispensary_coupons() {
 		'can_export'            => true,
 		'has_archive'           => true,
 		'exclude_from_search'   => false,
-		'publicly_queryable'    => true,
+		'publicly_queryable'    => false,
 		'rewrite'               => $rewrite,
 		'capability_type'       => 'page',
 	);
