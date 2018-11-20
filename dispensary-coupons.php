@@ -1209,3 +1209,29 @@ function activate_wpd_coupons() {
 	$wp_rewrite->flush_rules();
 }
 register_activation_hook( __FILE__, 'activate_wpd_coupons' );
+
+/**
+ * Update messages for Coupons.
+ * 
+ * @since 1.7
+ */
+function wpd_coupons_updated_messages( $messages ) {
+    if ( 'coupons' === get_post_type() ) {
+        $messages['post'] = array(
+            0 => '', // Unused. Messages start at index 1.
+            1 => __( 'Coupon updated.', 'wpd-coupons' ),
+            2 => __( 'Custom field updated.', 'wpd-coupons' ),
+            3 => __( 'Custom field deleted.', 'wpd-coupons' ),
+            4 => __( 'Coupon updated.', 'wpd-coupons' ),
+            5 => isset( $_GET['revision'] ) ? sprintf( __( 'Coupon restored to revision from %s' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+            6 => __( 'Coupon published.', 'wpd-coupons' ),
+            7 => __( 'Coupon saved.', 'wpd-coupons' ),
+            8 => __( 'Coupon submitted.', 'wpd-coupons' ),
+            9 => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.' ),
+            date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
+            10 => __( 'Coupon draft updated.', 'wpd-coupons' ),
+        );
+    }
+    return $messages;
+}
+add_filter( 'post_updated_messages', 'wpd_coupons_updated_messages' );
