@@ -1,5 +1,15 @@
 # Changelog
 
+### 1.7
+* Updated text for admin `post_updated_messages` in `dispensary-coupons.php`
+* Updated Coupons post type to no longer be publicly queryable in `dispensary-coupons.php`
+* Updated Coupons post type to no longer support the editor in `dispensary-coupons.php`
+
+### 1.6
+* Added permalink settings Classs for `coupons` base in `inc/class-dispensary-coupons-permalinks.php`
+* Added permalink settings option for `coupons` base in `dispensary-coupons.php`
+* Updated permalink base codes for `coupons` custom post type in `dispensary-coupons.php`
+
 ### 1.5.2
 * Added `Coupons Details` metabox with `wpd_coupon_code`, `wpd_coupon_amount`, `wpd_coupon_type` and `wpd_coupon_exp` options
 
