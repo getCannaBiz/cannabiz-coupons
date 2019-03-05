@@ -1,0 +1,310 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: WP Dispensary's Coupons\n"
+"POT-Creation-Date: 2019-03-04 22:07-0500\n"
+"PO-Revision-Date: 2019-03-04 22:07-0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: dispensary-coupons.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: dispensary-coupons.php:75
+msgctxt "Post Type General Name"
+msgid "Coupons"
+msgstr ""
+
+#: dispensary-coupons.php:76
+msgctxt "Post Type Singular Name"
+msgid "Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:77 dispensary-coupons.php:78
+#: dispensary-coupons.php:102 dispensary-coupons.php:905
+#: dispensary-coupons.php:936 dispensary-coupons.php:967
+#: dispensary-coupons.php:998 dispensary-coupons.php:1029
+#: dispensary-coupons.php:1060
+msgid "Coupons"
+msgstr ""
+
+#: dispensary-coupons.php:79
+msgid "Coupon Archives"
+msgstr ""
+
+#: dispensary-coupons.php:80
+msgid "Parent Coupon:"
+msgstr ""
+
+#: dispensary-coupons.php:81
+msgid "All Coupons"
+msgstr ""
+
+#: dispensary-coupons.php:82
+msgid "Add New Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:83
+msgid "Add New"
+msgstr ""
+
+#: dispensary-coupons.php:84
+msgid "New Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:85
+msgid "Edit Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:86
+msgid "Update Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:87
+msgid "View Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:88
+msgid "Search Coupons"
+msgstr ""
+
+#: dispensary-coupons.php:89
+msgid "Not found"
+msgstr ""
+
+#: dispensary-coupons.php:90
+msgid "Not found in Trash"
+msgstr ""
+
+#: dispensary-coupons.php:91
+msgid "Featured Image"
+msgstr ""
+
+#: dispensary-coupons.php:92
+msgid "Set featured image"
+msgstr ""
+
+#: dispensary-coupons.php:93
+msgid "Remove featured image"
+msgstr ""
+
+#: dispensary-coupons.php:94
+msgid "Use as featured image"
+msgstr ""
+
+#: dispensary-coupons.php:95
+msgid "Insert into Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:96
+msgid "Uploaded to this Coupon"
+msgstr ""
+
+#: dispensary-coupons.php:97
+msgid "Coupons list"
+msgstr ""
+
+#: dispensary-coupons.php:98
+msgid "Coupons list navigation"
+msgstr ""
+
+#: dispensary-coupons.php:99
+msgid "Filter coupons list"
+msgstr ""
+
+#: dispensary-coupons.php:103
+msgid "Display your dispensary coupons"
+msgstr ""
+
+#: dispensary-coupons.php:166
+msgid "Apply Coupon to Flower"
+msgstr ""
+
+#: dispensary-coupons.php:229
+msgid "Apply Coupon to Edible"
+msgstr ""
+
+#: dispensary-coupons.php:292
+msgid "Apply Coupon to Concentrate"
+msgstr ""
+
+#: dispensary-coupons.php:355
+msgid "Apply Coupon to Pre-roll"
+msgstr ""
+
+#: dispensary-coupons.php:418
+msgid "Apply Coupon to Topical"
+msgstr ""
+
+#: dispensary-coupons.php:484
+msgid "Apply Coupon to Grower"
+msgstr ""
+
+#: dispensary-coupons.php:538
+msgid "Dispensary Coupons"
+msgstr ""
+
+#: dispensary-coupons.php:540
+msgid "Display your WP Dispensary coupons."
+msgstr ""
+
+#: dispensary-coupons.php:630 dispensary-coupons.php:846
+msgid "Flower"
+msgstr ""
+
+#: dispensary-coupons.php:633 dispensary-coupons.php:849
+msgid "Edible"
+msgstr ""
+
+#: dispensary-coupons.php:636 dispensary-coupons.php:852
+msgid "Concentrate"
+msgstr ""
+
+#: dispensary-coupons.php:639 dispensary-coupons.php:855
+msgid "Pre-roll"
+msgstr ""
+
+#: dispensary-coupons.php:642 dispensary-coupons.php:858
+msgid "Topical"
+msgstr ""
+
+#: dispensary-coupons.php:645 dispensary-coupons.php:861
+msgid "Grower"
+msgstr ""
+
+#: dispensary-coupons.php:655
+msgid "View all coupons"
+msgstr ""
+
+#: dispensary-coupons.php:718
+msgid "Title:"
+msgstr ""
+
+#: dispensary-coupons.php:723
+msgid "Amount of coupons to show:"
+msgstr ""
+
+#: dispensary-coupons.php:729
+msgid "Display coupon title?"
+msgstr ""
+
+#: dispensary-coupons.php:734
+msgid "Display coupon featured image?"
+msgstr ""
+
+#: dispensary-coupons.php:739
+msgid "Display coupon details?"
+msgstr ""
+
+#: dispensary-coupons.php:745
+msgid "Display products this coupon applies to?"
+msgstr ""
+
+#: dispensary-coupons.php:751
+msgid "Display link to all coupons?"
+msgstr ""
+
+#: dispensary-coupons.php:755
+msgid "View all coupons URL:"
+msgstr ""
+
+#: dispensary-coupons.php:1089
+msgid "Coupon Details"
+msgstr ""
+
+#: dispensary-coupons.php:1116
+msgid "Coupon Code"
+msgstr ""
+
+#: dispensary-coupons.php:1121
+msgid "Coupon Amount"
+msgstr ""
+
+#: dispensary-coupons.php:1126
+msgid "Coupon Type"
+msgstr ""
+
+#: dispensary-coupons.php:1146
+msgid "Expiration Date"
+msgstr ""
+
+#: dispensary-coupons.php:1224 dispensary-coupons.php:1227
+msgid "Coupon updated."
+msgstr ""
+
+#: dispensary-coupons.php:1225
+msgid "Custom field updated."
+msgstr ""
+
+#: dispensary-coupons.php:1226
+msgid "Custom field deleted."
+msgstr ""
+
+#: dispensary-coupons.php:1228
+#, php-format
+msgid "Coupon restored to revision from %s"
+msgstr ""
+
+#: dispensary-coupons.php:1229
+msgid "Coupon published."
+msgstr ""
+
+#: dispensary-coupons.php:1230
+msgid "Coupon saved."
+msgstr ""
+
+#: dispensary-coupons.php:1231
+msgid "Coupon submitted."
+msgstr ""
+
+#: dispensary-coupons.php:1232
+#, php-format
+msgid "Coupon scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: dispensary-coupons.php:1232
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: dispensary-coupons.php:1233
+msgid "Coupon draft updated."
+msgstr ""
+
+#: inc/class-dispensary-coupons-permalinks.php:33
+msgid "Coupons Base"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "WP Dispensary's Coupons"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://www.wpdispensary.com/add-ons/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"Easily add and display coupons for your marijuana dispensary business. "
+"Brought to you by <a href=\"https://www.wpdispensary.com\" target=\"_blank"
+"\">WP Dispensary</a> and <a href=\"http://www.deviodigital.com/\" target="
+"\"_blank\">Devio Digital</a>."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "WP Dispensary"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://www.wpdispensary.com/"
+msgstr ""
