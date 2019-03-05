@@ -22,10 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since       1.0.0
  * @return      void
  */
-function wpdcoupons_load_scripts() {
 	wp_enqueue_style( 'wpdcoupons', plugin_dir_url( __FILE__ ) . 'css/style.css' );
+function wpd_coupons_load_scripts() {
 }
-add_action( 'wp_enqueue_scripts', 'wpdcoupons_load_scripts' );
+add_action( 'wp_enqueue_scripts', 'wpd_coupons_load_scripts' );
 
 
 /**
@@ -34,10 +34,10 @@ add_action( 'wp_enqueue_scripts', 'wpdcoupons_load_scripts' );
  * @since       1.1.0
  * @return      void
  */
-function wpdcoupons_load_admin_scripts() {
+function wpd_coupons_load_admin_scripts() {
 	wp_enqueue_style( 'wpd-coupons', plugin_dir_url( __FILE__ ) . 'css/admin.css' );
 }
-add_action( 'admin_enqueue_scripts', 'wpdcoupons_load_admin_scripts' );
+add_action( 'admin_enqueue_scripts', 'wpd_coupons_load_admin_scripts' );
 
 /**
  * The class responsible for creating custom permalinks
@@ -49,10 +49,10 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/class-dispensary-coupons-permali
  *
  * @since	   1.0.0
  */
-if ( ! function_exists( 'wpdispensary_coupons' ) ) {
+if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
 
 /** Register Custom Post Type */
-function wpdispensary_coupons() {
+function wp_dispensary_coupons() {
 
 	$wpd_coupons_slug = get_option( 'wpd_coupons_slug' );
 
@@ -121,7 +121,7 @@ function wpdispensary_coupons() {
 	register_post_type( 'coupons', $args );
 
 }
-add_action( 'init', 'wpdispensary_coupons', 0 );
+add_action( 'init', 'wp_dispensary_coupons', 0 );
 
 }
 
@@ -521,7 +521,7 @@ new Coupons_Growers();
  *
  * @since       1.0.0
  */
-class wpdcoupons_widget extends WP_Widget {
+class wpd_coupons_widget extends WP_Widget {
 
     /**
      * Constructor
@@ -533,7 +533,7 @@ class wpdcoupons_widget extends WP_Widget {
 	public function __construct() {
 
 		parent::__construct(
-			'wpdcoupons_widget',
+			'wpd_coupons_widget',
 			__( 'Dispensary Coupons', 'wpd-coupons' ),
 			array(
 				'description' => __( 'Display your WP Dispensary coupons.', 'wpd-coupons' ),
@@ -766,10 +766,10 @@ class wpdcoupons_widget extends WP_Widget {
  * @since       1.0.0
  * @return      void
  */
-function wpdcoupons_register_widget() {
-    register_widget( 'wpdcoupons_widget' );
+function wpd_coupons_register_widget() {
+    register_widget( 'wpd_coupons_widget' );
 }
-add_action( 'widgets_init', 'wpdcoupons_register_widget' );
+add_action( 'widgets_init', 'wpd_coupons_register_widget' );
 
 
 /**
@@ -780,7 +780,7 @@ add_action( 'widgets_init', 'wpdcoupons_register_widget' );
  * @param		string  $content
  * @return		string  $return The Dispensary Coupons shortcode
  */
-function wpdcoupons_shortcode( $atts ) {
+function wpd_coupons_shortcode( $atts ) {
 
 	extract(shortcode_atts( array(
 		'limit'		=> '5',
@@ -874,7 +874,7 @@ function wpdcoupons_shortcode( $atts ) {
 
 }
 
-add_shortcode( 'wpd-coupons', 'wpdcoupons_shortcode' );
+add_shortcode( 'wpd-coupons', 'wpd_coupons_shortcode' );
 
 
 /**
@@ -1202,7 +1202,7 @@ add_action( 'save_post', 'wpd_coupons_save_details_meta', 1, 2 ); // Save the cu
 
 // Registers the plugin activation hook.
 function activate_wpd_coupons() {
-	wpdispensary_coupons();
+	wp_dispensary_coupons();
 
 	global $wp_rewrite;
 	$wp_rewrite->init();
