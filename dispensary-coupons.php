@@ -1217,6 +1217,7 @@ register_activation_hook( __FILE__, 'activate_wpd_coupons' );
  * @since 1.7
  */
 function wpd_coupons_updated_messages( $messages ) {
+	global $post;
     if ( 'coupons' === get_post_type() ) {
         $messages['post'] = array(
             0 => '', // Unused. Messages start at index 1.
