@@ -793,14 +793,14 @@ function wpd_coupons_shortcode( $atts ) {
 
 	ob_start();
 
-		$wpdispensary_coupons_shortcode = new WP_Query(
+		$wpd_coupons_shortcode = new WP_Query(
 			array(
 				'post_type' => 'coupons',
 				'showposts' => $limit
 			)
 		);
 
-		while ( $wpdispensary_coupons_shortcode->have_posts() ) : $wpdispensary_coupons_shortcode->the_post();
+		while ( $wpd_coupons_shortcode->have_posts() ) : $wpd_coupons_shortcode->the_post();
 
 		$do_not_duplicate = $post->ID;
 
