@@ -626,23 +626,23 @@ class wpd_coupons_widget extends WP_Widget {
 
 						echo "<span class='wpd-coupons-plugin-meta-item'>";
 
-							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
 						if ( '' !== $couponflower ) {
+							echo "<strong>" . __( 'Flower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a> ";
 						}
-							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
 						if ( '' !== $couponedible ) {
+							echo "<strong>" . __( 'Edible', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a> ";
 						}
-							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
 						if ( '' !== $couponconcentrate ) {
+							echo "<strong>" . __( 'Concentrate', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a> ";
 						}
-							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
 						if ( '' !== $couponpreroll ) {
+							echo "<strong>" . __( 'Pre-roll', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
 						}
-							echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
 						if ( '' !== $coupontopical ) {
+							echo "<strong>" . __( 'Topical', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
 						}
-							echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
 						if ( '' !== $coupongrower ) {
+							echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
 						}
 
 						echo "</span>";
@@ -842,23 +842,23 @@ function wpd_coupons_shortcode( $atts ) {
 
 				echo "<span class='wpd-coupons-plugin-meta-item'>";
 
-					echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
 				if ( '' !== $couponflower ) {
+					echo "<strong>" . __( 'Flower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a>";
 				}
-					echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
 				if ( '' !== $couponedible ) {
+					echo "<strong>" . __( 'Edible', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a>";
 				}
-					echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
 				if ( '' !== $couponconcentrate ) {
+					echo "<strong>" . __( 'Concentrate', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a>";
 				}
-					echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
 				if ( '' !== $couponpreroll ) {
+					echo "<strong>" . __( 'Pre-roll', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
 				}
-					echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
 				if ( '' !== $coupontopical ) {
+					echo "<strong>" . __( 'Topical', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
 				}
-					echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
 				if ( '' !== $coupongrower ) {
+					echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
 				}
 
 				echo "</span>";
@@ -902,7 +902,7 @@ function wpd_coupons_pricing() {
 	$flower_coupons = new WP_Query( $args );
 	if ( $flower_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $flower_coupons->have_posts() ) : $flower_coupons->the_post();
 	?>
@@ -933,7 +933,7 @@ function wpd_coupons_pricing() {
 	$edible_coupons = new WP_Query( $args );
 	if ( $edible_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $edible_coupons->have_posts() ) : $edible_coupons->the_post();
 	?>
@@ -964,7 +964,7 @@ function wpd_coupons_pricing() {
 	$concentrate_coupons = new WP_Query( $args );
 	if ( $concentrate_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $concentrate_coupons->have_posts() ) : $concentrate_coupons->the_post();
 	?>
@@ -995,7 +995,7 @@ function wpd_coupons_pricing() {
 	$preroll_coupons = new WP_Query( $args );
 	if ( $preroll_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $preroll_coupons->have_posts() ) : $preroll_coupons->the_post();
 	?>
@@ -1026,7 +1026,7 @@ function wpd_coupons_pricing() {
 	$topical_coupons = new WP_Query( $args );
 	if ( $topical_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $topical_coupons->have_posts() ) : $topical_coupons->the_post();
 	?>
@@ -1057,7 +1057,7 @@ function wpd_coupons_pricing() {
 	$grower_coupons = new WP_Query( $args );
 	if ( $grower_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>Coupons:</span> ';
+	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
 
 	while ( $grower_coupons->have_posts() ) : $grower_coupons->the_post();
 	?>
@@ -1113,17 +1113,17 @@ function wpd_coupon_details() {
 
 	/** Echo out the fields */
 	echo '<div class="wpd-coupons-box">';
-	echo '<p>Coupon Code:</p>';
+	echo '<p>' . __( 'Coupon Code', 'wpd-coupons' ) . ':</p>';
 	echo '<input type="text" name="wpd_coupon_code" value="' . esc_html( $wpd_coupon_code ) . '" class="widefat" />';
 	echo '</div>';
 
 	echo '<div class="wpd-coupons-box">';
-	echo '<p>Coupon Amount:</p>';
+	echo '<p>' . __( 'Coupon Amount', 'wpd-coupons' ) . ':</p>';
 	echo '<input type="text" name="wpd_coupon_amount" value="' . esc_html( $wpd_coupon_amount ) . '" class="widefat" />';
 	echo '</div>';
 
 	echo '<div class="wpd-coupons-box">';
-	echo '<p>Coupon Type:</p>';
+	echo '<p>' . __( 'Coupon Type', 'wpd-coupons' ) . ':</p>';
 
 	$terms = array( 'Flat Rate', 'Percentage' );
 
@@ -1143,7 +1143,7 @@ function wpd_coupon_details() {
 	echo '</div>';
 
 	echo '<div class="wpd-coupons-box">';
-	echo '<p>Expiration Date:</p>';
+	echo '<p>' . __( 'Expiration Date', 'wpd-coupons' ) . ':</p>';
 	echo '<input type="date" name="wpd_coupon_exp" value="' . esc_html( $wpd_coupon_exp ) . '" class="widefat" />';
 	echo '</div>';
 
