@@ -1089,7 +1089,7 @@ function wpd_coupons_add_details_metaboxes() {
 		__( 'Coupon Details', 'wpd-coupons' ),
 		'wpd_coupon_details',
 		'coupons',
-		'side',
+		'normal',
 		'default'
 	);
 }
