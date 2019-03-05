@@ -7,6 +7,7 @@
  * Author:		WP Dispensary
  * Author URI:	https://www.wpdispensary.com/
  * Text Domain: wpd-coupons
+ * Domain Path: /languages
  *
  * @package		WPD_Coupons
  */
@@ -590,9 +591,9 @@ class wpd_coupons_widget extends WP_Widget {
 
 			echo "<div class='wpd-coupons-plugin-meta'>";
 
-					if( 'on' == $instance['couponimage'] ) {
+					if ( 'on' == $instance['couponimage'] ) {
 						/** Display coupon featured image */
-						echo "<a ". $couponlink ." href='" . get_permalink( $post->ID ) ."'>";
+						echo "<a " . $couponlink . " href='" . get_permalink( $post->ID ) . "'>";
 						the_post_thumbnail( 'medium' );
 						echo "</a>";
 					}
@@ -604,44 +605,44 @@ class wpd_coupons_widget extends WP_Widget {
 						$couponlink = '';
 					}
 
-					if( 'on' == $instance['coupontitle'] ) {
+					if ( 'on' == $instance['coupontitle'] ) {
 						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) ."'". $couponlink .">". get_the_title( $post->ID ) ."</a></strong></span>";
+						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) . "'" . $couponlink . ">" . get_the_title( $post->ID ) . "</a></strong></span>";
 					}
 
-					if( 'on' == $instance['coupondetails'] ) {
+					if ( 'on' == $instance['coupondetails'] ) {
 						/** Display coupon details */
-						echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
+						echo "<p><span class='wpd-coupons-plugin-meta-item'>" . the_content() . "</span></p>";
 					}
 
-					if( 'on' == $instance['couponproduct'] ) {
+					if ( 'on' == $instance['couponproduct'] ) {
 						/** Display products that the coupon applies to */
-						$couponflower		= get_post_meta( get_the_id(), '_selected_flowers', true );
-						$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
-						$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
-						$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
-						$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
-						$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
+						$couponflower      = get_post_meta( get_the_id(), '_selected_flowers', true );
+						$couponedible      = get_post_meta( get_the_id(), '_selected_edibles', true );
+						$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+						$couponpreroll     = get_post_meta( get_the_id(), '_selected_prerolls', true );
+						$coupontopical     = get_post_meta( get_the_id(), '_selected_topicals', true );
+						$coupongrower      = get_post_meta( get_the_id(), '_selected_growers', true );
 
 						echo "<span class='wpd-coupons-plugin-meta-item'>";
 
-						if ( ! $couponflower == '' ) {
 							echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+						if ( '' !== $couponflower ) {
 						}
-						if ( ! $couponedible == '' ) {
 							echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+						if ( '' !== $couponedible ) {
 						}
-						if ( ! $couponconcentrate == '' ) {
 							echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+						if ( '' !== $couponconcentrate ) {
 						}
-						if ( ! $couponpreroll == '' ) {
 							echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+						if ( '' !== $couponpreroll ) {
 						}
-						if ( ! $coupontopical == '' ) {
 							echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
+						if ( '' !== $coupontopical ) {
 						}
-						if ( ! $coupongrower == '' ) {
 							echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
+						if ( '' !== $coupongrower ) {
 						}
 
 						echo "</span>";
@@ -649,9 +650,9 @@ class wpd_coupons_widget extends WP_Widget {
 
 					echo "</div>";
 
-					if( 'on' == $instance['viewall'] ) {
+					if ( 'on' == $instance['viewall'] ) {
 						/** Display link to all coupons */
-						echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='". $instance['viewallurl'] ."' target='_blank'>View all coupons &rarr;</a></span></p>";
+						echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='" . $instance['viewallurl'] . "' target='_blank'>" . __( 'View all coupons', 'wpd-coupons' ) . " &rarr;</a></span></p>";
 					}
 
 			endwhile; // end loop
@@ -677,14 +678,14 @@ class wpd_coupons_widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = $old_instance;
 
-        $instance['title']      		= strip_tags( $new_instance['title'] );
-        $instance['limit']   			= strip_tags( $new_instance['limit'] );
-        $instance['coupontitle']		= $new_instance['coupontitle'];
-        $instance['couponimage']		= $new_instance['couponimage'];
-        $instance['coupondetails']		= $new_instance['coupondetails'];
-		$instance['couponproduct']		= $new_instance['couponproduct'];
-        $instance['viewall']			= $new_instance['viewall'];
-        $instance['viewallurl']			= $new_instance['viewallurl'];
+        $instance['title']         = strip_tags( $new_instance['title'] );
+        $instance['limit']         = strip_tags( $new_instance['limit'] );
+        $instance['coupontitle']   = $new_instance['coupontitle'];
+        $instance['couponimage']   = $new_instance['couponimage'];
+        $instance['coupondetails'] = $new_instance['coupondetails'];
+		$instance['couponproduct'] = $new_instance['couponproduct'];
+        $instance['viewall']       = $new_instance['viewall'];
+        $instance['viewallurl']    = $new_instance['viewallurl'];
 
         return $instance;
     }
@@ -701,14 +702,14 @@ class wpd_coupons_widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'title'				=> 'Dispensary Coupons',
-            'limit'				=> '5',
-            'coupontitle'		=> '',
-            'couponimage'		=> '',
-            'coupondetails'		=> '',
-            'couponproduct'		=> '',
-			'viewall'			=> '',
-			'viewallurl'		=> ''
+            'title'         => 'Coupons',
+            'limit'         => '5',
+            'coupontitle'   => '',
+            'couponimage'   => '',
+            'coupondetails' => '',
+            'couponproduct' => '',
+			'viewall'       => '',
+			'viewallurl'    => ''
         );
 
         $instance = wp_parse_args( (array) $instance, $defaults );
@@ -724,29 +725,29 @@ class wpd_coupons_widget extends WP_Widget {
         </p>
 
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['coupontitle'], 'on'); ?> id="<?php echo $this->get_field_id('coupontitle'); ?>" name="<?php echo $this->get_field_name('coupontitle'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( $instance['coupontitle'], 'on' ); ?> id="<?php echo $this->get_field_id( 'coupontitle' ); ?>" name="<?php echo $this->get_field_name( 'coupontitle' ); ?>" />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'coupontitle' ) ); ?>"><?php _e( 'Display coupon title?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['couponimage'], 'on'); ?> id="<?php echo $this->get_field_id('couponimage'); ?>" name="<?php echo $this->get_field_name('couponimage'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( $instance['couponimage'], 'on' ); ?> id="<?php echo $this->get_field_id( 'couponimage' ); ?>" name="<?php echo $this->get_field_name( 'couponimage' ); ?>" />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'couponimage' ) ); ?>"><?php _e( 'Display coupon featured image?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['coupondetails'], 'on'); ?> id="<?php echo $this->get_field_id('coupondetails'); ?>" name="<?php echo $this->get_field_name('coupondetails'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( $instance['coupondetails'], 'on' ); ?> id="<?php echo $this->get_field_id( 'coupondetails' ); ?>" name="<?php echo $this->get_field_name( 'coupondetails' ); ?>" />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php _e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
         </p>
 
-		<?php if( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
+		<?php if ( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['couponproduct'], 'on'); ?> id="<?php echo $this->get_field_id('couponproduct'); ?>" name="<?php echo $this->get_field_name('couponproduct'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( $instance['couponproduct'], 'on' ); ?> id="<?php echo $this->get_field_id( 'couponproduct' ); ?>" name="<?php echo $this->get_field_name( 'couponproduct' ); ?>" />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display products this coupon applies to?', 'wpd-coupons' ); ?></label>
         </p>
 		<?php } ?>
 
 	    <p>
-			<input class="checkbox" type="checkbox" <?php checked($instance['viewall'], 'on'); ?> id="<?php echo $this->get_field_id('viewall'); ?>" name="<?php echo $this->get_field_name('viewall'); ?>" />
+			<input class="checkbox" type="checkbox" <?php checked( $instance['viewall'], 'on' ); ?> id="<?php echo $this->get_field_id( 'viewall' ); ?>" name="<?php echo $this->get_field_name( 'viewall' ); ?>" />
 			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php _e( 'Display link to all coupons?', 'wpd-coupons' ); ?></label>
         </p>
 
@@ -783,11 +784,11 @@ add_action( 'widgets_init', 'wpd_coupons_register_widget' );
 function wpd_coupons_shortcode( $atts ) {
 
 	extract(shortcode_atts( array(
-		'limit'		=> '5',
-		'image'		=> 'yes',
-		'title'		=> 'yes',
-		'details'	=> 'yes',
-		'products'	=> 'yes'
+		'limit'    => '5',
+		'image'    => 'yes',
+		'title'    => 'yes',
+		'details'  => 'yes',
+		'products' => 'yes'
 	), $atts ) );
 
 	ob_start();
@@ -804,12 +805,12 @@ function wpd_coupons_shortcode( $atts ) {
 		$do_not_duplicate = $post->ID;
 
 		/** Display products that the coupon applies to */
-		$couponflower		= get_post_meta( get_the_id(), '_selected_flowers', true );
-		$couponedible		= get_post_meta( get_the_id(), '_selected_edibles', true );
-		$couponconcentrate	= get_post_meta( get_the_id(), '_selected_concentrates', true );
-		$couponpreroll		= get_post_meta( get_the_id(), '_selected_prerolls', true );
-		$coupontopical		= get_post_meta( get_the_id(), '_selected_topicals', true );
-		$coupongrower		= get_post_meta( get_the_id(), '_selected_growers', true );
+		$couponflower      = get_post_meta( get_the_id(), '_selected_flowers', true );
+		$couponedible      = get_post_meta( get_the_id(), '_selected_edibles', true );
+		$couponconcentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
+		$couponpreroll     = get_post_meta( get_the_id(), '_selected_prerolls', true );
+		$coupontopical     = get_post_meta( get_the_id(), '_selected_topicals', true );
+		$coupongrower      = get_post_meta( get_the_id(), '_selected_growers', true );
 
 		$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
 		if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
@@ -822,42 +823,42 @@ function wpd_coupons_shortcode( $atts ) {
 
 			if ( 'yes' == $image ) {
 				/** Display coupon featured image */
-				echo "<a ". $couponlink ." href='" . get_permalink( $post->ID ) ."'>";
+				echo "<a " . $couponlink . " href='" . get_permalink( $post->ID ) . "'>";
 				the_post_thumbnail( 'thumbnail' );
 				echo "</a>";
 			}
 
 			if ( 'yes' == $title ) {
 				/** Display coupon title */
-				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a ". $couponlink ." href='" . get_permalink( $post->ID ) ."'>". get_the_title( $post->ID ) ."</a></h3></span>";
+				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a " . $couponlink . " href='" . get_permalink( $post->ID ) . "'>" . get_the_title( $post->ID ) . "</a></h3></span>";
 			}
 
 			if ( 'yes' == $details ) {
 				/** Display coupon details */
-				echo "<p><span class='wpd-coupons-plugin-meta-item'>". the_content() ."</span></p>";
+				echo "<p><span class='wpd-coupons-plugin-meta-item'>" . the_content() . "</span></p>";
 			}
 
-			if('yes' == $products ) {
+			if ( 'yes' == $products ) {
 
 				echo "<span class='wpd-coupons-plugin-meta-item'>";
 
-				if ( ! $couponflower == '' ) {
 					echo "<strong>Flower:</strong> <a href='". get_permalink( $couponflower ) ."'>". get_the_title( $couponflower ) ."</a> ";
+				if ( '' !== $couponflower ) {
 				}
-				if ( ! $couponedible == '' ) {
 					echo "<strong>Edible:</strong> <a href='". get_permalink( $couponedible ) ."'>". get_the_title( $couponedible ) ."</a> ";
+				if ( '' !== $couponedible ) {
 				}
-				if ( ! $couponconcentrate == '' ) {
 					echo "<strong>Concentrate:</strong> <a href='". get_permalink( $couponconcentrate ) ."'>". get_the_title( $couponconcentrate ) ."</a> ";
+				if ( '' !== $couponconcentrate ) {
 				}
-				if ( ! $couponpreroll == '' ) {
 					echo "<strong>Pre-roll:</strong> <a href='". get_permalink( $couponpreroll ) ."'>". get_the_title( $couponpreroll ) ."</a>";
+				if ( '' !== $couponpreroll ) {
 				}
-				if ( ! $coupontopical == '' ) {
 					echo "<strong>Topical:</strong> <a href='". get_permalink( $coupontopical ) ."'>". get_the_title( $coupontopical ) ."</a>";
+				if ( '' !== $coupontopical ) {
 				}
-				if ( ! $coupongrower == '' ) {
 					echo "<strong>Grower:</strong> <a href='". get_permalink( $coupongrower ) ."'>". get_the_title( $coupongrower ) ."</a>";
+				if ( '' !== $coupongrower ) {
 				}
 
 				echo "</span>";
@@ -1227,8 +1228,7 @@ function wpd_coupons_updated_messages( $messages ) {
             6 => __( 'Coupon published.', 'wpd-coupons' ),
             7 => __( 'Coupon saved.', 'wpd-coupons' ),
             8 => __( 'Coupon submitted.', 'wpd-coupons' ),
-            9 => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.' ),
-            date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
+            9 => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
             10 => __( 'Coupon draft updated.', 'wpd-coupons' ),
         );
     }
