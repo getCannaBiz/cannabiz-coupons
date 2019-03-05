@@ -22,8 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since       1.0.0
  * @return      void
  */
-	wp_enqueue_style( 'wpdcoupons', plugin_dir_url( __FILE__ ) . 'css/style.css' );
 function wpd_coupons_load_scripts() {
+	wp_enqueue_style( 'wpd-coupons', plugin_dir_url( __FILE__ ) . 'css/style.css' );
 }
 add_action( 'wp_enqueue_scripts', 'wpd_coupons_load_scripts' );
 
@@ -570,14 +570,14 @@ class wpd_coupons_widget extends WP_Widget {
 
         do_action( 'dispensary_coupons_before_widget' );
 
-			$wpdispensary_coupons_widget = new WP_Query(
+			$wp_dispensary_coupons_widget = new WP_Query(
 				array(
 					'post_type' => 'coupons',
 					'showposts' => $instance['limit']
 				)
 			);
 
-			while ( $wpdispensary_coupons_widget->have_posts() ) : $wpdispensary_coupons_widget->the_post();
+			while ( $wp_dispensary_coupons_widget->have_posts() ) : $wp_dispensary_coupons_widget->the_post();
 
 			$do_not_duplicate = $post->ID;
 
