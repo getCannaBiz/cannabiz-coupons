@@ -1,5 +1,15 @@
 # Changelog
 
+### 1.8
+* Added `global $post` to updated messages function in `dispensary-coupons.php`
+* Updated function names to be uniform with other WPD plugins in `dispensary-coupons.php`
+* Updated variable names to match other WPD plugins in `dispensary-coupons.php`
+* Updated Coupons CPT `$args` to remove from search results in `dispensary-coupons.php`
+* Updated `Coupon Details` metabox location to main column under title in `dispensary-coupons.php`
+* Updated text strings for localization in `dispensary-coupons.php`
+* Updated `.pot` file with new text strings for localization in `languages/wpd-coupons.pot`
+* WordPress Coding Standards updates in `dispensary-coupons.php`
+
 ### 1.7
 * Updated text for admin `post_updated_messages` in `dispensary-coupons.php`
 * Updated Coupons post type to no longer be publicly queryable in `dispensary-coupons.php`

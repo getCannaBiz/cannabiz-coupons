@@ -2,8 +2,8 @@
 Contributors: wpdispensary, deviodigital
 Tags: dispensary, cannabis, marijuana, wp-dispensary, mmj, weed, coupons, discounts
 Requires at least: 3.0
-Tested up to: 4.9.8
-Stable tag: 1.7
+Tested up to: 5.1
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,16 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 2. Activate the plugin through the `Plugins` menu in WordPress
 
 == Changelog ==
+
+= 1.8 =
+* Added `global $post` to updated messages function in `dispensary-coupons.php`
+* Updated function names to be uniform with other WPD plugins in `dispensary-coupons.php`
+* Updated variable names to match other WPD plugins in `dispensary-coupons.php`
+* Updated Coupons CPT `$args` to remove from search results in `dispensary-coupons.php`
+* Updated `Coupon Details` metabox location to main column under title in `dispensary-coupons.php`
+* Updated text strings for localization in `dispensary-coupons.php`
+* Updated `.pot` file with new text strings for localization in `languages/wpd-coupons.pot`
+* WordPress Coding Standards updates in `dispensary-coupons.php`
 
 = 1.7 =
 * Updated text for admin `post_updated_messages` in `dispensary-coupons.php`
