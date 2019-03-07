@@ -1175,10 +1175,10 @@ function wpd_coupons_save_details_meta( $post_id, $post ) {
 	 * We'll put it into an array to make it easier to loop though.
 	 */
 
-	$wpd_coupons_meta['wpd_coupon_code']   = $_POST['wpd_coupon_code'];
-	$wpd_coupons_meta['wpd_coupon_amount'] = $_POST['wpd_coupon_amount'];
-	$wpd_coupons_meta['wpd_coupon_type']   = $_POST['wpd_coupon_type'];
-	$wpd_coupons_meta['wpd_coupon_exp']    = $_POST['wpd_coupon_exp'];
+	$wpd_coupons_meta['wpd_coupon_code']   = esc_html( $_POST['wpd_coupon_code'] );
+	$wpd_coupons_meta['wpd_coupon_amount'] = esc_html( $_POST['wpd_coupon_amount'] );
+	$wpd_coupons_meta['wpd_coupon_type']   = esc_html( $_POST['wpd_coupon_type'] );
+	$wpd_coupons_meta['wpd_coupon_exp']    = esc_html( $_POST['wpd_coupon_exp'] );
 
 	/** Add values of $compounddetails_meta as custom fields */
 
