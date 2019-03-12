@@ -1,5 +1,8 @@
 # Changelog
 
+### 1.8.1
+* Updated post type to support the new Gutenberg editor in WordPress 5.0+ in `dispensary-coupons.php`
+
 ### 1.8
 * Added `global $post` to updated messages function in `dispensary-coupons.php`
 * Updated function names to be uniform with other WPD plugins in `dispensary-coupons.php`
