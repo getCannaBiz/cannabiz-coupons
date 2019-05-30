@@ -41,6 +41,11 @@ function wpd_coupons_load_admin_scripts() {
 add_action( 'admin_enqueue_scripts', 'wpd_coupons_load_admin_scripts' );
 
 /**
+ * The file responsible for creating custom helper functions
+ */
+require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-helper-functions.php';
+
+/**
  * The class responsible for creating custom permalinks
  */
 require_once plugin_dir_path( __FILE__ ) . 'inc/class-dispensary-coupons-permalinks.php';
