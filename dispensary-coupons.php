@@ -1133,17 +1133,18 @@ function wpd_coupon_details() {
 	echo '<div class="wpd-coupons-box">';
 	echo '<p>' . __( 'Coupon Type', 'wpd-coupons' ) . ':</p>';
 
-	$terms = array( 'Flat Rate', 'Percentage' );
+	// Get coupon types.
+	$coupon_types = get_wpd_coupons_types();
 
-	if ( $terms ) {
+	if ( $coupon_types ) {
 		printf( '<select name="wpd_coupon_type" id="wpd_coupon_type" class="widefat">' );
-		foreach ( $terms as $term ) {
-			if ( esc_html( $term ) != $wpd_coupon_type ) {
+		foreach ( $coupon_types as $id=>$value ) {
+			if ( esc_html( $value ) != $wpd_coupon_type ) {
 				$coupon_type_selected = '';
 			} else {
 				$coupon_type_selected = 'selected="selected"';
 			}
-			printf( '<option value="%s" ' . esc_html( $coupon_type_selected ) . '>%s</option>', esc_html( $term ), esc_html( $term ) );
+			printf( '<option value="%s" ' . esc_html( $coupon_type_selected ) . '>%s</option>', esc_html( $value ), esc_html( $value ) );
 		}
 		print( '</select>' );
 	}
