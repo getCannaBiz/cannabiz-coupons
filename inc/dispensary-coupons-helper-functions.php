@@ -23,3 +23,14 @@ function get_wpd_coupons_types() {
 		)
 	);
 }
+
+/**
+ * Get a coupon type's name.
+ *
+ * @param string $type Coupon type.
+ * @return string
+ */
+function get_wpd_coupons_type( $type = '' ) {
+	$types = get_wpd_coupons_types();
+	return isset( $types[ $type ] ) ? $types[ $type ] : '';
+}
