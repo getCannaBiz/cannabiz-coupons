@@ -615,7 +615,7 @@ class wpd_coupons_widget extends WP_Widget {
 
 					if ( 'on' == $instance['coupontitle'] ) {
 						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) . "'" . $couponlink . ">" . get_the_title( $post->ID ) . "</a></strong></span>";
+						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) . "'" . esc_html( $couponlink ) . ">" . get_the_title( $post->ID ) . "</a></strong></span>";
 					}
 
 					if ( 'on' == $instance['coupondetails'] ) {
@@ -723,44 +723,44 @@ class wpd_coupons_widget extends WP_Widget {
         $instance = wp_parse_args( (array) $instance, $defaults );
         ?>
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title:', 'wpd-coupons' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title:', 'wpd-coupons' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" type="text" value="<?php echo $instance['title']; ?>" />
         </p>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'Amount of coupons to show:', 'wpd-coupons' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Amount of coupons to show:', 'wpd-coupons' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php echo $instance['limit']; ?>" />
         </p>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['coupontitle'], 'on' ); ?> id="<?php echo $this->get_field_id( 'coupontitle' ); ?>" name="<?php echo $this->get_field_name( 'coupontitle' ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'coupontitle' ) ); ?>"><?php _e( 'Display coupon title?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'coupontitle' ) ); ?>"><?php esc_html_e( 'Display coupon title?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['couponimage'], 'on' ); ?> id="<?php echo $this->get_field_id( 'couponimage' ); ?>" name="<?php echo $this->get_field_name( 'couponimage' ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'couponimage' ) ); ?>"><?php _e( 'Display coupon featured image?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponimage' ) ); ?>"><?php esc_html_e( 'Display coupon featured image?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['coupondetails'], 'on' ); ?> id="<?php echo $this->get_field_id( 'coupondetails' ); ?>" name="<?php echo $this->get_field_name( 'coupondetails' ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php _e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'coupondetails' ) ); ?>"><?php esc_html_e( 'Display coupon details?', 'wpd-coupons' ); ?></label>
         </p>
 
 		<?php if ( is_plugin_active( 'wp-dispensary/wp-dispensary.php' ) ) { ?>
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['couponproduct'], 'on' ); ?> id="<?php echo $this->get_field_id( 'couponproduct' ); ?>" name="<?php echo $this->get_field_name( 'couponproduct' ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php _e( 'Display products this coupon applies to?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponproduct' ) ); ?>"><?php esc_html_e( 'Display products this coupon applies to?', 'wpd-coupons' ); ?></label>
         </p>
 		<?php } ?>
 
 	    <p>
 			<input class="checkbox" type="checkbox" <?php checked( $instance['viewall'], 'on' ); ?> id="<?php echo $this->get_field_id( 'viewall' ); ?>" name="<?php echo $this->get_field_name( 'viewall' ); ?>" />
-			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php _e( 'Display link to all coupons?', 'wpd-coupons' ); ?></label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'viewall' ) ); ?>"><?php esc_html_e( 'Display link to all coupons?', 'wpd-coupons' ); ?></label>
         </p>
 
         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'viewallurl' ) ); ?>"><?php _e( 'View all coupons URL:', 'wpd-coupons' ); ?></label>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'viewallurl' ) ); ?>"><?php esc_html_e( 'View all coupons URL:', 'wpd-coupons' ); ?></label>
             <input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'viewallurl' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'viewallurl' ) ); ?>" type="text" value="<?php echo $instance['viewallurl']; ?>" />
         </p>
 

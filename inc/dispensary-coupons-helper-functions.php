@@ -38,17 +38,17 @@ function get_wpd_coupons_type( $type = '' ) {
 /**
  * Get a coupon code by ID.
  *
- * @param string $id Coupon ID.
+ * @param string $coupon_id Coupon ID.
  * @return string
  */
-function get_wpd_coupon_code( $id = '' ) {
+function get_wpd_coupon_code( $coupon_id = '' ) {
     // Require ID.
-    if ( '' == $id ) {
+    if ( '' == $coupon_id ) {
         return false;
     }
 
     // Get coupon code.
-    $coupon_code = get_post_meta( $id, 'wpd_coupon_code', TRUE );
+    $coupon_code = get_post_meta( $coupon_id, 'wpd_coupon_code', TRUE );
 
     return $coupon_code;
 }

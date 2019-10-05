@@ -6,11 +6,11 @@ With this plugin you can add coupons to your website and show them off with a sh
 
 When adding new coupons to your website, you'll be able to select what items in your dispensary menu the coupon is good for, and this information will be added to the coupon display.
 
-**Requirements**
+## Requirements
 
 Dispensary Coupons was built with the [WP Dispensary](https://www.wpdispensary.com) plugin to be installed and activated in order utilize the added functionality for websites that are running the WPD plugin.
 
-**Shortcode**
+## Shortcode
 
 You can display your dispensary coupons by adding the following shortcode:
 
@@ -22,25 +22,25 @@ Here is the shortcode with all options included:
 
 If you'd like to hide the title, details or products, you can change **yes** to **no** in the shortcode example above.
 
-**Contribute**
+## Contribute
 
 Want to help this plugin get better? Issues and pull requests are more than welcomed :)
 
 ## Screenshots
 
-**Dispensary Coupons in the dashboard menu**
+### Dispensary Coupons in the dashboard menu
 
 ![Post Type](http://www.robertdevore.com/wp-content/uploads/2016/04/screenshot-1.jpg)
 
-**An example of how the widget displays the coupons**
+### An example of how the widget displays the coupons
 
 ![Widget Display](http://www.robertdevore.com/wp-content/uploads/2016/04/screenshot-2.jpg)
 
-**The widget editor in the WordPress dashboard**
+### The widget editor in the WordPress dashboard
 
 ![Widget Editor](http://www.robertdevore.com/wp-content/uploads/2016/04/screenshot-3.jpg)
 
-**Metaboxes on the Dispensary Coupon editor screen**
+### Metaboxes on the Dispensary Coupon editor screen
 
 ![WPD Metaboxes](http://www.wpdispensary.com/wp-content/uploads/2016/04/screenshot-4.jpg)
 
