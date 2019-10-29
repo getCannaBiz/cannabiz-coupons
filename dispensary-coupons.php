@@ -1055,7 +1055,7 @@ function wpd_coupons_pricing() {
 	$flower_coupons = new WP_Query( $args );
 	if ( $flower_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . esc_attr__( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
 	while ( $flower_coupons->have_posts() ) : $flower_coupons->the_post();
 	?>
@@ -1086,7 +1086,7 @@ function wpd_coupons_pricing() {
 	$edible_coupons = new WP_Query( $args );
 	if ( $edible_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
 	while ( $edible_coupons->have_posts() ) : $edible_coupons->the_post();
 	?>
@@ -1117,7 +1117,7 @@ function wpd_coupons_pricing() {
 	$concentrate_coupons = new WP_Query( $args );
 	if ( $concentrate_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
 	while ( $concentrate_coupons->have_posts() ) : $concentrate_coupons->the_post();
 	?>
@@ -1148,7 +1148,7 @@ function wpd_coupons_pricing() {
 	$preroll_coupons = new WP_Query( $args );
 	if ( $preroll_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
 	while ( $preroll_coupons->have_posts() ) : $preroll_coupons->the_post();
 	?>
@@ -1179,7 +1179,7 @@ function wpd_coupons_pricing() {
 	$topical_coupons = new WP_Query( $args );
 	if ( $topical_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
 	while ( $topical_coupons->have_posts() ) : $topical_coupons->the_post();
 	?>
