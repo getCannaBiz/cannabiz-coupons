@@ -760,6 +760,8 @@ class wpd_coupons_widget extends WP_Widget {
 						$couponpreroll     = get_post_meta( get_the_id(), '_selected_prerolls', true );
 						$coupontopical     = get_post_meta( get_the_id(), '_selected_topicals', true );
 						$coupongrower      = get_post_meta( get_the_id(), '_selected_growers', true );
+						$coupongear        = get_post_meta( get_the_id(), '_selected_gear', true );
+						$coupontincture    = get_post_meta( get_the_id(), '_selected_tinctures', true );
 
 						echo "<span class='wpd-coupons-plugin-meta-item'>";
 
@@ -780,6 +782,12 @@ class wpd_coupons_widget extends WP_Widget {
 						}
 						if ( '' !== $coupongrower ) {
 							echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
+						}
+						if ( '' !== $coupongear ) {
+							echo "<strong>" . __( 'Gear', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
+						}
+						if ( '' !== $coupontincture ) {
+							echo "<strong>" . __( 'Tincture', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
 						}
 
 						echo "</span>";
@@ -948,6 +956,8 @@ function wpd_coupons_shortcode( $atts ) {
 		$couponpreroll     = get_post_meta( get_the_id(), '_selected_prerolls', true );
 		$coupontopical     = get_post_meta( get_the_id(), '_selected_topicals', true );
 		$coupongrower      = get_post_meta( get_the_id(), '_selected_growers', true );
+		$coupongear        = get_post_meta( get_the_id(), '_selected_gear', true );
+		$coupontincture    = get_post_meta( get_the_id(), '_selected_tinctures', true );
 
 		$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
 		if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
@@ -996,6 +1006,12 @@ function wpd_coupons_shortcode( $atts ) {
 				}
 				if ( '' !== $coupongrower ) {
 					echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
+				}
+				if ( '' !== $coupongear ) {
+					echo "<strong>" . __( 'Gear', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
+				}
+				if ( '' !== $coupontincture ) {
+					echo "<strong>" . __( 'Tincture', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
 				}
 
 				echo "</span>";
