@@ -46,4 +46,4 @@ Want to help this plugin get better? Issues and pull requests are more than welc
 
 ## Changelog
 
-[view CHANGELOG.md](https://github.com/deviodigital/dispensary-coupons/blob/master/CHANGELOG.md)
+[view CHANGELOG.md](https://github.com/wpdispensary/dispensary-coupons/blob/master/CHANGELOG.md)
