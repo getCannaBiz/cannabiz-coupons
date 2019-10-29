@@ -3,8 +3,8 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: WP Dispensary's Coupons\n"
-"POT-Creation-Date: 2019-03-04 22:07-0500\n"
-"PO-Revision-Date: 2019-03-04 22:07-0500\n"
+"POT-Creation-Date: 2019-10-29 15:34-0400\n"
+"PO-Revision-Date: 2019-10-29 15:33-0400\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,263 +21,285 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: dispensary-coupons.php:75
+#: dispensary-coupons.php:82
 msgctxt "Post Type General Name"
 msgid "Coupons"
 msgstr ""
 
-#: dispensary-coupons.php:76
+#: dispensary-coupons.php:83
 msgctxt "Post Type Singular Name"
 msgid "Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:77 dispensary-coupons.php:78
-#: dispensary-coupons.php:102 dispensary-coupons.php:905
-#: dispensary-coupons.php:936 dispensary-coupons.php:967
-#: dispensary-coupons.php:998 dispensary-coupons.php:1029
-#: dispensary-coupons.php:1060
+#: dispensary-coupons.php:84 dispensary-coupons.php:85
+#: dispensary-coupons.php:1055 dispensary-coupons.php:1086
+#: dispensary-coupons.php:1117 dispensary-coupons.php:1148
+#: dispensary-coupons.php:1179 dispensary-coupons.php:1210
+#: dispensary-coupons.php:1241 dispensary-coupons.php:1272
 msgid "Coupons"
 msgstr ""
 
-#: dispensary-coupons.php:79
+#: dispensary-coupons.php:86
 msgid "Coupon Archives"
 msgstr ""
 
-#: dispensary-coupons.php:80
+#: dispensary-coupons.php:87
 msgid "Parent Coupon:"
 msgstr ""
 
-#: dispensary-coupons.php:81
+#: dispensary-coupons.php:88
 msgid "All Coupons"
 msgstr ""
 
-#: dispensary-coupons.php:82
+#: dispensary-coupons.php:89
 msgid "Add New Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:83
+#: dispensary-coupons.php:90
 msgid "Add New"
 msgstr ""
 
-#: dispensary-coupons.php:84
+#: dispensary-coupons.php:91
 msgid "New Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:85
+#: dispensary-coupons.php:92
 msgid "Edit Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:86
+#: dispensary-coupons.php:93
 msgid "Update Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:87
+#: dispensary-coupons.php:94
 msgid "View Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:88
+#: dispensary-coupons.php:95
 msgid "Search Coupons"
 msgstr ""
 
-#: dispensary-coupons.php:89
+#: dispensary-coupons.php:96
 msgid "Not found"
 msgstr ""
 
-#: dispensary-coupons.php:90
+#: dispensary-coupons.php:97
 msgid "Not found in Trash"
 msgstr ""
 
-#: dispensary-coupons.php:91
+#: dispensary-coupons.php:98
 msgid "Featured Image"
 msgstr ""
 
-#: dispensary-coupons.php:92
+#: dispensary-coupons.php:99
 msgid "Set featured image"
 msgstr ""
 
-#: dispensary-coupons.php:93
+#: dispensary-coupons.php:100
 msgid "Remove featured image"
 msgstr ""
 
-#: dispensary-coupons.php:94
+#: dispensary-coupons.php:101
 msgid "Use as featured image"
 msgstr ""
 
-#: dispensary-coupons.php:95
+#: dispensary-coupons.php:102
 msgid "Insert into Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:96
+#: dispensary-coupons.php:103
 msgid "Uploaded to this Coupon"
 msgstr ""
 
-#: dispensary-coupons.php:97
+#: dispensary-coupons.php:104
 msgid "Coupons list"
 msgstr ""
 
-#: dispensary-coupons.php:98
+#: dispensary-coupons.php:105
 msgid "Coupons list navigation"
 msgstr ""
 
-#: dispensary-coupons.php:99
+#: dispensary-coupons.php:106
 msgid "Filter coupons list"
 msgstr ""
 
-#: dispensary-coupons.php:103
-msgid "Display your dispensary coupons"
+#: dispensary-coupons.php:109
+#, php-format
+msgid "%s"
 msgstr ""
 
-#: dispensary-coupons.php:166
+#: dispensary-coupons.php:110
+#, php-format
+msgid "Display your %s"
+msgstr ""
+
+#: dispensary-coupons.php:174
 msgid "Apply Coupon to Flower"
 msgstr ""
 
-#: dispensary-coupons.php:229
+#: dispensary-coupons.php:237
 msgid "Apply Coupon to Edible"
 msgstr ""
 
-#: dispensary-coupons.php:292
+#: dispensary-coupons.php:300
 msgid "Apply Coupon to Concentrate"
 msgstr ""
 
-#: dispensary-coupons.php:355
+#: dispensary-coupons.php:363
 msgid "Apply Coupon to Pre-roll"
 msgstr ""
 
-#: dispensary-coupons.php:418
+#: dispensary-coupons.php:426
 msgid "Apply Coupon to Topical"
 msgstr ""
 
-#: dispensary-coupons.php:484
+#: dispensary-coupons.php:489
 msgid "Apply Coupon to Grower"
 msgstr ""
 
-#: dispensary-coupons.php:538
+#: dispensary-coupons.php:552
+msgid "Apply Coupon to Gear"
+msgstr ""
+
+#: dispensary-coupons.php:615
+msgid "Apply Coupon to Tincture"
+msgstr ""
+
+#: dispensary-coupons.php:672
 msgid "Dispensary Coupons"
 msgstr ""
 
-#: dispensary-coupons.php:540
+#: dispensary-coupons.php:674
 msgid "Display your WP Dispensary coupons."
 msgstr ""
 
-#: dispensary-coupons.php:630 dispensary-coupons.php:846
+#: dispensary-coupons.php:766 dispensary-coupons.php:990
 msgid "Flower"
 msgstr ""
 
-#: dispensary-coupons.php:633 dispensary-coupons.php:849
+#: dispensary-coupons.php:769 dispensary-coupons.php:993
 msgid "Edible"
 msgstr ""
 
-#: dispensary-coupons.php:636 dispensary-coupons.php:852
+#: dispensary-coupons.php:772 dispensary-coupons.php:996
 msgid "Concentrate"
 msgstr ""
 
-#: dispensary-coupons.php:639 dispensary-coupons.php:855
+#: dispensary-coupons.php:775 dispensary-coupons.php:999
 msgid "Pre-roll"
 msgstr ""
 
-#: dispensary-coupons.php:642 dispensary-coupons.php:858
+#: dispensary-coupons.php:778 dispensary-coupons.php:1002
 msgid "Topical"
 msgstr ""
 
-#: dispensary-coupons.php:645 dispensary-coupons.php:861
+#: dispensary-coupons.php:781 dispensary-coupons.php:1005
 msgid "Grower"
 msgstr ""
 
-#: dispensary-coupons.php:655
+#: dispensary-coupons.php:784 dispensary-coupons.php:1008
+msgid "Gear"
+msgstr ""
+
+#: dispensary-coupons.php:787 dispensary-coupons.php:1011
+msgid "Tincture"
+msgstr ""
+
+#: dispensary-coupons.php:797
 msgid "View all coupons"
 msgstr ""
 
-#: dispensary-coupons.php:718
+#: dispensary-coupons.php:860
 msgid "Title:"
 msgstr ""
 
-#: dispensary-coupons.php:723
+#: dispensary-coupons.php:865
 msgid "Amount of coupons to show:"
 msgstr ""
 
-#: dispensary-coupons.php:729
+#: dispensary-coupons.php:871
 msgid "Display coupon title?"
 msgstr ""
 
-#: dispensary-coupons.php:734
+#: dispensary-coupons.php:876
 msgid "Display coupon featured image?"
 msgstr ""
 
-#: dispensary-coupons.php:739
+#: dispensary-coupons.php:881
 msgid "Display coupon details?"
 msgstr ""
 
-#: dispensary-coupons.php:745
+#: dispensary-coupons.php:887
 msgid "Display products this coupon applies to?"
 msgstr ""
 
-#: dispensary-coupons.php:751
+#: dispensary-coupons.php:893
 msgid "Display link to all coupons?"
 msgstr ""
 
-#: dispensary-coupons.php:755
+#: dispensary-coupons.php:897
 msgid "View all coupons URL:"
 msgstr ""
 
-#: dispensary-coupons.php:1089
+#: dispensary-coupons.php:1301
 msgid "Coupon Details"
 msgstr ""
 
-#: dispensary-coupons.php:1116
+#: dispensary-coupons.php:1328
 msgid "Coupon Code"
 msgstr ""
 
-#: dispensary-coupons.php:1121
+#: dispensary-coupons.php:1333
 msgid "Coupon Amount"
 msgstr ""
 
-#: dispensary-coupons.php:1126
+#: dispensary-coupons.php:1338
 msgid "Coupon Type"
 msgstr ""
 
-#: dispensary-coupons.php:1146
+#: dispensary-coupons.php:1359
 msgid "Expiration Date"
 msgstr ""
 
-#: dispensary-coupons.php:1224 dispensary-coupons.php:1227
+#: dispensary-coupons.php:1437 dispensary-coupons.php:1440
 msgid "Coupon updated."
 msgstr ""
 
-#: dispensary-coupons.php:1225
+#: dispensary-coupons.php:1438
 msgid "Custom field updated."
 msgstr ""
 
-#: dispensary-coupons.php:1226
+#: dispensary-coupons.php:1439
 msgid "Custom field deleted."
 msgstr ""
 
-#: dispensary-coupons.php:1228
+#: dispensary-coupons.php:1441
 #, php-format
 msgid "Coupon restored to revision from %s"
 msgstr ""
 
-#: dispensary-coupons.php:1229
+#: dispensary-coupons.php:1442
 msgid "Coupon published."
 msgstr ""
 
-#: dispensary-coupons.php:1230
+#: dispensary-coupons.php:1443
 msgid "Coupon saved."
 msgstr ""
 
-#: dispensary-coupons.php:1231
+#: dispensary-coupons.php:1444
 msgid "Coupon submitted."
 msgstr ""
 
-#: dispensary-coupons.php:1232
+#: dispensary-coupons.php:1445
 #, php-format
 msgid "Coupon scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
-#: dispensary-coupons.php:1232
+#: dispensary-coupons.php:1445
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: dispensary-coupons.php:1233
+#: dispensary-coupons.php:1446
 msgid "Coupon draft updated."
 msgstr ""
 
@@ -285,12 +307,20 @@ msgstr ""
 msgid "Coupons Base"
 msgstr ""
 
+#: inc/dispensary-coupons-helper-functions.php:21
+msgid "Percentage"
+msgstr ""
+
+#: inc/dispensary-coupons-helper-functions.php:22
+msgid "Flat Rate"
+msgstr ""
+
 #. Plugin Name of the plugin/theme
 msgid "WP Dispensary's Coupons"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.wpdispensary.com/add-ons/"
+msgid "http://www.wpdispensary.com/"
 msgstr ""
 
 #. Description of the plugin/theme
