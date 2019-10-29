@@ -1032,12 +1032,10 @@ add_shortcode( 'wpd-coupons', 'wpd_coupons_shortcode' );
 
 
 /**
- * Add Action Hook
+ * Add Coupons to the bottom of the Pricing data table
  *
  * @since       1.4.0
  */
-add_action( 'wpd_pricingoutput_bottom', 'wpd_coupons_pricing' );
-
 function wpd_coupons_pricing() {
 ?>
 
@@ -1198,21 +1196,52 @@ function wpd_coupons_pricing() {
 
 <?php if ( in_array( get_post_type(), array( 'growers' ) ) ) {
 
+global $post;
+$growerid = $post->ID;
+
+$args = array(
+	'meta_key'       => '_selected_growers',
+	'meta_value'     => $growerid,
+	'post_type'      => 'coupons',
+	'posts_per_page' => -1
+);
+$grower_coupons = new WP_Query( $args );
+if ( $grower_coupons->have_posts() ) :
+
+echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
+
+while ( $grower_coupons->have_posts() ) : $grower_coupons->the_post();
+?>
+<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
+<?php
+endwhile;
+
+echo '</td>';
+
+endif;
+
+// Reset Post Data
+wp_reset_postdata(); ?>
+
+<?php } // if Grower ?>
+
+<?php if ( in_array( get_post_type(), array( 'gear' ) ) ) {
+
 	global $post;
-	$growerid = $post->ID;
+	$gearid = $post->ID;
 
 	$args = array(
-		'meta_key'       => '_selected_growers',
-		'meta_value'     => $growerid,
+		'meta_key'       => '_selected_gear',
+		'meta_value'     => $gearid,
 		'post_type'      => 'coupons',
 		'posts_per_page' => -1
 	);
-	$grower_coupons = new WP_Query( $args );
-	if ( $grower_coupons->have_posts() ) :
+	$gear_coupons = new WP_Query( $args );
+	if ( $gear_coupons->have_posts() ) :
 
-	echo '<td class="wpd-coupons" colspan="6"><span>' . __( 'Coupons', 'wpd-coupons' ) . ':</span> ';
+	echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
 
-	while ( $grower_coupons->have_posts() ) : $grower_coupons->the_post();
+	while ( $gear_coupons->have_posts() ) : $gear_coupons->the_post();
 	?>
 	<a href='<?php the_permalink(); ?>'><?php the_title(); ?></a>
 	<?php
@@ -1225,9 +1254,41 @@ function wpd_coupons_pricing() {
 	// Reset Post Data
 	wp_reset_postdata(); ?>
 
-<?php } // if Grower ?>
+<?php } // if Gear ?>
+
+<?php if ( in_array( get_post_type(), array( 'tinctures' ) ) ) {
+
+global $post;
+$tinctureid = $post->ID;
+
+$args = array(
+	'meta_key'       => '_selected_tinctures',
+	'meta_value'     => $tinctureid,
+	'post_type'      => 'coupons',
+	'posts_per_page' => -1
+);
+$tincture_coupons = new WP_Query( $args );
+if ( $tincture_coupons->have_posts() ) :
+
+echo '<td class="wpd-coupons" colspan="7"><span>' . __( 'Coupons', 'wpd-coupons' ) . '</span> ';
+
+while ( $tincture_coupons->have_posts() ) : $tincture_coupons->the_post();
+?>
+<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+<?php
+endwhile;
+
+echo '</td>';
+
+endif;
+
+// Reset Post Data
+wp_reset_postdata(); ?>
+
+<?php } // if Tinctures ?>
 
 <?php }
+add_action( 'wpd_pricingoutput_bottom', 'wpd_coupons_pricing', 20 );
 
 /**
  * Coupon Details metabox
