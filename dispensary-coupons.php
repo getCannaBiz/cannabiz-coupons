@@ -419,12 +419,12 @@ class Coupons_Topicals {
 	function admin_init() {
 		add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 		add_action( 'save_post', array( $this, 'save_post' ), 10, 2 );
-		$this->meta_key     = "_selected_{$this->SELECT_POST_TYPE}";
-		$this->box_id       = "select-{$this->SELECT_POST_TYPE}-metabox";
-		$this->field_id     = "selected_{$this->SELECT_POST_TYPE}";
-		$this->field_name   = "selected_{$this->SELECT_POST_TYPE}";
-		$this->box_label    = __( 'Apply Coupon to Topical', 'wpd-coupons' );
-		$this->field_label  = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
+		$this->meta_key    = "_selected_{$this->SELECT_POST_TYPE}";
+		$this->box_id      = "select-{$this->SELECT_POST_TYPE}-metabox";
+		$this->field_id    = "selected_{$this->SELECT_POST_TYPE}";
+		$this->field_name  = "selected_{$this->SELECT_POST_TYPE}";
+		$this->box_label   = __( 'Apply Coupon to Topical', 'wpd-coupons' );
+		$this->field_label = __( "Choose {$this->SELECT_POST_LABEL}", 'wpd-coupons' );
 	}
 	function add_meta_boxes() {
 		add_meta_box(
@@ -441,25 +441,23 @@ class Coupons_Topicals {
 		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
 		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
 		wp_dropdown_pages( array(
-			'id' => $this->field_id,
-			'name' => $this->field_name,
-			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
-			'post_type' => $this->SELECT_POST_TYPE,
+			'id'               => $this->field_id,
+			'name'             => $this->field_name,
+			'selected'         => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type'        => $this->SELECT_POST_TYPE,
 			'show_option_none' => $this->field_label,
 		));
 		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
 	}
 	function save_post( $post_id, $post ) {
 		if ( $post->post_type == $this->FOR_POST_TYPE && isset( $_POST[ $this->field_name ] ) ) {
-			$fieldconcentrates = sanitize_text_field( $_POST['selected_topicals'] );
-			update_post_meta( $post_id, $this->meta_key, $fieldconcentrates );
+			$fieldtopicals = sanitize_text_field( $_POST['selected_topicals'] );
+			update_post_meta( $post_id, $this->meta_key, $fieldtopicals );
 		}
 	}
 }
 new Coupons_Topicals();
 
-
-}
 
 /**
  * Growers Coupons
@@ -468,7 +466,6 @@ new Coupons_Topicals();
  *
  * @since    1.3.0
  */
-
 class Coupons_Growers {
 	var $FOR_POST_TYPE = 'coupons';
 	var $SELECT_POST_TYPE = 'growers';
@@ -507,10 +504,10 @@ class Coupons_Growers {
 		$save_hierarchical = $wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical;
 		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = true;
 		wp_dropdown_pages( array(
-			'id' => $this->field_id,
-			'name' => $this->field_name,
-			'selected' => empty( $selected_post_id ) ? 0 : $selected_post_id,
-			'post_type' => $this->SELECT_POST_TYPE,
+			'id'               => $this->field_id,
+			'name'             => $this->field_name,
+			'selected'         => empty( $selected_post_id ) ? 0 : $selected_post_id,
+			'post_type'        => $this->SELECT_POST_TYPE,
 			'show_option_none' => $this->field_label,
 		));
 		$wp_post_types[ $this->SELECT_POST_TYPE ]->hierarchical = $save_hierarchical;
@@ -961,33 +958,33 @@ function wpd_coupons_shortcode( $atts ) {
 
 		$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
 		if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
-			$couponlink = " target='_blank'";
+			$couponlink = ' target="_blank"';
 		} else {
 			$couponlink = '';
 		}
 
-			echo "<div class='wpd-coupons-plugin-meta shortcode'>";
+			echo '<div class="wpd-coupons-plugin-meta shortcode">';
 
 			if ( 'yes' == $image ) {
 				/** Display coupon featured image */
-				echo "<a " . $couponlink . " href='" . get_permalink( $post->ID ) . "'>";
+				echo '<a ' . $couponlink . ' href="' . get_permalink( $post->ID ) . '">';
 				the_post_thumbnail( 'thumbnail' );
-				echo "</a>";
+				echo '</a>';
 			}
 
 			if ( 'yes' == $title ) {
 				/** Display coupon title */
-				echo "<span class='wpd-coupons-plugin-meta-item'><h3><a " . $couponlink . " href='" . get_permalink( $post->ID ) . "'>" . get_the_title( $post->ID ) . "</a></h3></span>";
+				echo '<span class="wpd-coupons-plugin-meta-item"><h3><a ' . $couponlink . ' href="' . get_permalink( $post->ID ) . '">' . get_the_title( $post->ID ) . '</a></h3></span>';
 			}
 
 			if ( 'yes' == $details ) {
 				/** Display coupon details */
-				echo "<p><span class='wpd-coupons-plugin-meta-item'>" . the_content() . "</span></p>";
+				echo '<p><span class="wpd-coupons-plugin-meta-item:>' . the_content() . '</span></p>';
 			}
 
 			if ( 'yes' == $products ) {
 
-				echo "<span class='wpd-coupons-plugin-meta-item'>";
+				echo '<span class="wpd-coupons-plugin-meta-item">';
 
 				if ( '' !== $couponflower ) {
 					echo "<strong>" . __( 'Flower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a>";
@@ -1014,10 +1011,10 @@ function wpd_coupons_shortcode( $atts ) {
 					echo "<strong>" . __( 'Tincture', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
 				}
 
-				echo "</span>";
+				echo '</span>';
 			}
 
-			echo "</div>";
+			echo '</div>';
 
 		endwhile; // end loop
 
@@ -1435,17 +1432,17 @@ function wpd_coupons_updated_messages( $messages ) {
 	global $post;
     if ( 'coupons' === get_post_type() ) {
         $messages['post'] = array(
-            0 => '', // Unused. Messages start at index 1.
-            1 => __( 'Coupon updated.', 'wpd-coupons' ),
-            2 => __( 'Custom field updated.', 'wpd-coupons' ),
-            3 => __( 'Custom field deleted.', 'wpd-coupons' ),
-            4 => __( 'Coupon updated.', 'wpd-coupons' ),
-            5 => isset( $_GET['revision'] ) ? sprintf( __( 'Coupon restored to revision from %s' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-            6 => __( 'Coupon published.', 'wpd-coupons' ),
-            7 => __( 'Coupon saved.', 'wpd-coupons' ),
-            8 => __( 'Coupon submitted.', 'wpd-coupons' ),
-            9 => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
-            10 => __( 'Coupon draft updated.', 'wpd-coupons' ),
+            0  => '', // Unused. Messages start at index 1.
+            1  => esc_attr__( 'Coupon updated.', 'wpd-coupons' ),
+            2  => esc_attr__( 'Custom field updated.', 'wpd-coupons' ),
+            3  => esc_attr__( 'Custom field deleted.', 'wpd-coupons' ),
+            4  => esc_attr__( 'Coupon updated.', 'wpd-coupons' ),
+            5  => isset( $_GET['revision'] ) ? sprintf( __( 'Coupon restored to revision from %s' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+            6  => esc_attr__( 'Coupon published.', 'wpd-coupons' ),
+            7  => esc_attr__( 'Coupon saved.', 'wpd-coupons' ),
+            8  => esc_attr__( 'Coupon submitted.', 'wpd-coupons' ),
+            9  => sprintf( __( 'Coupon scheduled for: <strong>%1$s</strong>.' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
+            10 => esc_attr__( 'Coupon draft updated.', 'wpd-coupons' ),
         );
     }
     return $messages;
