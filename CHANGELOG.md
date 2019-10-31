@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.9.1
+*   Bugfix added missing helper functions file in `inc/dispensary-coupons-helper-functions.php`
+
 ## 1.9
 *   Added `Gear` and `Tinctures` metaboxes to the Coupons post type in `dispensary-coupons.php`
 *   Added `Gear` and `Tinctures` menu types to coupons widget in `dispensary-coupons.php`
