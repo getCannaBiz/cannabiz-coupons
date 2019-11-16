@@ -39,10 +39,10 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 
 == Screenshots ==
 
-1. Dispensary Coupons in the dashboard menu
+1. An example of the Edit Coupon screen
 2. An example of how the widget displays the coupons
 3. The widget editor in the WordPress dashboard
-4. The metaboxes that show on the Dispensary Coupon editor screen
+4. Coupons in the admin dashboard menu
 
 == Installation ==
 
