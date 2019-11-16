@@ -732,11 +732,34 @@ class wpd_coupons_widget extends WP_Widget {
 						echo "</a>";
 					}
 
-					$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
-					if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
-						$couponlink = " target='_blank'";
-					} else {
-						$couponlink = '';
+					$wpd_coupon_code   = get_post_meta( $post->ID, 'wpd_coupon_code', true );
+					$wpd_coupon_amount = get_post_meta( $post->ID, 'wpd_coupon_amount', true );
+					$wpd_coupon_type   = get_post_meta( $post->ID, 'wpd_coupon_type', true );
+					$wpd_coupon_exp    = get_post_meta( $post->ID, 'wpd_coupon_exp', true );
+
+					// Display coupon code.
+					if ( $wpd_coupon_code ) {
+						echo '<span class="wpd-coupons-plugin-meta-item code">' . $wpd_coupon_code . '</span>';
+					}
+
+					// Display coupon amount.
+					if ( $wpd_coupon_amount && $wpd_coupon_type ) {
+						// Coupon amount default.
+						$coupon_amount = wpd_currency_code() . $wpd_coupon_amount;
+
+						// Coupon amount (if percentage).
+						if ( 'Percentage' == $wpd_coupon_type ) {
+							$coupon_amount = $wpd_coupon_amount . '%';
+						}
+
+						echo '<span class="wpd-coupons-plugin-meta-item amount">' . $coupon_amount . '</span>';
+					}
+
+					// Display coupon expiration date.
+					if ( 'on' == $instance['couponexp'] ) {
+						if ( $wpd_coupon_exp ) {
+							echo '<span class="wpd-coupons-plugin-meta-item exp">' . esc_attr__( 'Exp', 'wpd-coupons' ) . ': ' . $wpd_coupon_exp . '</span>';
+						}
 					}
 
 					if ( 'on' == $instance['coupontitle'] ) {
@@ -822,6 +845,7 @@ class wpd_coupons_widget extends WP_Widget {
 
         $instance['title']         = strip_tags( $new_instance['title'] );
         $instance['limit']         = strip_tags( $new_instance['limit'] );
+        $instance['couponexp']     = $new_instance['couponexp'];
         $instance['coupontitle']   = $new_instance['coupontitle'];
         $instance['couponimage']   = $new_instance['couponimage'];
         $instance['coupondetails'] = $new_instance['coupondetails'];
@@ -844,12 +868,14 @@ class wpd_coupons_widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-            'title'         => 'Coupons',
-            'limit'         => '5',
-            'coupontitle'   => '',
-            'couponimage'   => '',
-            'coupondetails' => '',
-            'couponproduct' => '',
+			'title'         => __( 'Coupons','wpd-coupons' ),
+			'limit'         => '5',
+			'coupon'        => '',
+			'couponexp'     => 'on',
+			'coupontitle'   => '',
+			'couponimage'   => '',
+			'coupondetails' => '',
+			'couponproduct' => '',
 			'viewall'       => '',
 			'viewallurl'    => ''
         );
@@ -864,6 +890,11 @@ class wpd_coupons_widget extends WP_Widget {
         <p>
             <label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'Amount of coupons to show:', 'wpd-coupons' ); ?></label>
 			<input class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" type="number" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" min="1" max="999" value="<?php echo $instance['limit']; ?>" />
+        </p>
+
+	    <p>
+			<input class="checkbox" type="checkbox" <?php checked( $instance['couponexp'], 'on' ); ?> id="<?php echo $this->get_field_id( 'couponexp' ); ?>" name="<?php echo $this->get_field_name( 'couponexp' ); ?>" />
+			<label for="<?php echo esc_attr( $this->get_field_id( 'couponexp' ) ); ?>"><?php esc_html_e( 'Display coupon expiration?', 'wpd-coupons' ); ?></label>
         </p>
 
 	    <p>
@@ -1316,7 +1347,7 @@ function wpd_coupon_details() {
 	echo '<input type="hidden" name="wpd_coupons_details_meta_noncename" id="wpd_coupons_details_meta_noncename" value="' .
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
-	/** Get the thccbd data if its already been entered */
+	/** Get the coupon data if its already been entered */
 	$wpd_coupon_code   = get_post_meta( $post->ID, 'wpd_coupon_code', true );
 	$wpd_coupon_amount = get_post_meta( $post->ID, 'wpd_coupon_amount', true );
 	$wpd_coupon_type   = get_post_meta( $post->ID, 'wpd_coupon_type', true );
