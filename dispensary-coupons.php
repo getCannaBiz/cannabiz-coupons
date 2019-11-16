@@ -671,7 +671,7 @@ class wpd_coupons_widget extends WP_Widget {
 			'wpd_coupons_widget',
 			__( 'Dispensary Coupons', 'wpd-coupons' ),
 			array(
-				'description' => __( 'Display your WP Dispensary coupons.', 'wpd-coupons' ),
+				'description' => __( 'Your WP Dispensary coupons', 'wpd-coupons' ),
 				'classname'   => 'wpd-coupons-widget',
 			)
 		);
@@ -713,8 +713,6 @@ class wpd_coupons_widget extends WP_Widget {
 			);
 
 			while ( $wp_dispensary_coupons_widget->have_posts() ) : $wp_dispensary_coupons_widget->the_post();
-
-			$do_not_duplicate = $post->ID;
 
 			$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
 			if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
