@@ -51,3 +51,16 @@
 		display: block;
 	}
 }
+
+span.wpd-coupons-plugin-meta-item.code {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+span.wpd-coupons-plugin-meta-item.amount {
+    color: #76BD1D;
+}
+
+span.wpd-coupons-plugin-meta-item.exp {
+    display: block;
+}
