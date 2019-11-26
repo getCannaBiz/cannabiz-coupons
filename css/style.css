@@ -13,7 +13,7 @@
 	border: 2px dashed #eee;
 	display: inline-block;
 	margin: 0 0 12px 0;
-	padding: 6px 12px;
+	padding: 12px;
 	position: relative;
 	width: 100%;
 }
@@ -52,15 +52,62 @@
 	}
 }
 
+/** Widget items */
+
+.wpd-coupons-widget .wpd-coupons-plugin-meta {
+    text-align: center;
+}
+
+span.wpd-coupons-plugin-meta-item {
+	display: block;
+	margin-bottom: 6px;
+}
+
+/** Widget item title */
+
+span.wpd-coupons-plugin-meta-item.title {
+    font-size: 18px;
+}
+
+/** Widget item code */
+
 span.wpd-coupons-plugin-meta-item.code {
+	color: #454545;
     font-weight: 700;
     margin-right: 5px;
 }
 
-span.wpd-coupons-plugin-meta-item.amount {
-    color: #76BD1D;
+span.wpd-coupons-plugin-meta-item.code svg {
+	fill: #76BD43;
 }
 
+/** Widget item amount */
+
+span.wpd-coupons-plugin-meta-item.amount {
+    color: #76BD43;
+}
+
+/** Widget item expiration date */
+
 span.wpd-coupons-plugin-meta-item.exp {
-    display: block;
+	font-size: 13px;
+}
+
+/** Shortcode styles */
+
+.wpd-coupons-plugin-meta-item.code-exp {
+	position: relative;
+	float: right;
+}
+
+.wpd-coupons-plugin-meta-item.code-exp .code {
+    background: #eee;
+	padding: 10px;
+	margin-right: 0;
+}
+
+.wpd-coupons-plugin-meta-item.code-exp .exp {
+	font-size: 12px;
+	font-style: italic;
+	text-align: center;
 }
