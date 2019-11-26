@@ -735,11 +735,6 @@ class wpd_coupons_widget extends WP_Widget {
 					$wpd_coupon_type   = get_post_meta( $post->ID, 'wpd_coupon_type', true );
 					$wpd_coupon_exp    = get_post_meta( $post->ID, 'wpd_coupon_exp', true );
 
-					// Display coupon code.
-					if ( $wpd_coupon_code ) {
-						echo '<span class="wpd-coupons-plugin-meta-item code">' . $wpd_coupon_code . '</span>';
-					}
-
 					// Display coupon amount.
 					if ( $wpd_coupon_amount && $wpd_coupon_type ) {
 						// Coupon amount default.
@@ -750,7 +745,22 @@ class wpd_coupons_widget extends WP_Widget {
 							$coupon_amount = $wpd_coupon_amount . '%';
 						}
 
-						echo '<span class="wpd-coupons-plugin-meta-item amount">' . $coupon_amount . '</span>';
+						echo '<span class="wpd-coupons-plugin-meta-item amount">' . __( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
+					}
+
+					if ( 'on' == $instance['coupontitle'] ) {
+						/** Display coupon title */
+						echo '<span class="wpd-coupons-plugin-meta-item title">' . get_the_title( $post->ID ) . '</span>';
+					}
+
+					// Display coupon code.
+					if ( $wpd_coupon_code ) {
+						echo '<span class="wpd-coupons-plugin-meta-item code"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M13.219 4h-3.926c-1.654-2.58-4.919-4.182-8.293-3.983v1.688c2.286-.164 4.79.677 6.113 2.295h-2.113v2.339c-2.059-.157-4.005.605-5 1.159l.688 1.617c1.196-.625 2.53-1.243 4.312-1.026v4.084l10.796 10.827 8.204-8.223-10.781-10.777zm-2.226 5.875c-.962.963-2.598.465-2.88-.85 1.318.139 2.192-.872 2.114-2.017 1.261.338 1.701 1.93.766 2.867z"/></svg> ' . $wpd_coupon_code . '</span>';
+					}
+
+					if ( 'on' == $instance['coupondetails'] ) {
+						/** Display coupon details */
+						echo '<span class="wpd-coupons-plugin-meta-item">' . the_content() . '</span>';
 					}
 
 					// Display coupon expiration date.
@@ -758,16 +768,6 @@ class wpd_coupons_widget extends WP_Widget {
 						if ( $wpd_coupon_exp ) {
 							echo '<span class="wpd-coupons-plugin-meta-item exp">' . esc_attr__( 'Exp', 'wpd-coupons' ) . ': ' . $wpd_coupon_exp . '</span>';
 						}
-					}
-
-					if ( 'on' == $instance['coupontitle'] ) {
-						/** Display coupon title */
-						echo "<span class='wpd-coupons-plugin-meta-item title'><strong><a href='" . get_permalink( $post->ID ) . "'" . esc_html( $couponlink ) . ">" . get_the_title( $post->ID ) . "</a></strong></span>";
-					}
-
-					if ( 'on' == $instance['coupondetails'] ) {
-						/** Display coupon details */
-						echo "<p><span class='wpd-coupons-plugin-meta-item'>" . the_content() . "</span></p>";
 					}
 
 					if ( 'on' == $instance['couponproduct'] ) {
@@ -784,34 +784,34 @@ class wpd_coupons_widget extends WP_Widget {
 						echo "<span class='wpd-coupons-plugin-meta-item'>";
 
 						if ( '' !== $couponflower ) {
-							echo "<strong>" . __( 'Flower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a> ";
+							echo "<a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a> ";
 						}
 						if ( '' !== $couponedible ) {
-							echo "<strong>" . __( 'Edible', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a> ";
+							echo "<a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a> ";
 						}
 						if ( '' !== $couponconcentrate ) {
-							echo "<strong>" . __( 'Concentrate', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a> ";
+							echo "<a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a> ";
 						}
 						if ( '' !== $couponpreroll ) {
-							echo "<strong>" . __( 'Pre-roll', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
+							echo "<a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
 						}
 						if ( '' !== $coupontopical ) {
-							echo "<strong>" . __( 'Topical', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
+							echo "<a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
 						}
 						if ( '' !== $coupongrower ) {
-							echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
+							echo "<a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
 						}
 						if ( '' !== $coupongear ) {
-							echo "<strong>" . __( 'Gear', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
+							echo "<a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
 						}
 						if ( '' !== $coupontincture ) {
-							echo "<strong>" . __( 'Tincture', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
+							echo "<a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
 						}
 
-						echo "</span>";
+						echo '</span>';
 					}
 
-					echo "</div>";
+					echo '</div>';
 
 					if ( 'on' == $instance['viewall'] ) {
 						/** Display link to all coupons */
@@ -870,9 +870,9 @@ class wpd_coupons_widget extends WP_Widget {
 			'limit'         => '5',
 			'coupon'        => '',
 			'couponexp'     => 'on',
-			'coupontitle'   => '',
+			'coupontitle'   => 'on',
 			'couponimage'   => '',
-			'coupondetails' => '',
+			'coupondetails' => 'on',
 			'couponproduct' => '',
 			'viewall'       => '',
 			'viewallurl'    => ''
