@@ -2,9 +2,9 @@
 
 The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](https://www.wpdispensary.com) menu management plugin.
 
-With this plugin you can add coupons to your website and show them off with a shortcode or widget.
+With this plugin installed, you can add coupons to your website and show them off via the included shortcode and widget.
 
-When adding new coupons to your website, you'll be able to select what items in your dispensary menu the coupon is good for, and this information will be added to the coupon display.
+This plugin also extends the [eCommerce](https://www.wpdispensary.com/product/ecommerce/) add-on for WP Dispensary, allowing customers to use the coupon codes when placing orders.
 
 ## Requirements
 
@@ -18,9 +18,13 @@ You can display your dispensary coupons by adding the following shortcode:
 
 Here is the shortcode with all options included:
 
-`[wpd-coupons limit="5" image="yes" title="yes" details="yes" products="yes"]`
+`[wpd-coupons limit="5" image="yes" imagesize="medium" title="yes" couponexp="yes" details="yes" products="yes"]`
 
-If you'd like to hide the title, details or products, you can change **yes** to **no** in the shortcode example above.
+If you'd like to hide any of the included details, you can change **yes** to **no** in the shortcode attributes from the above example.
+
+## Widget
+
+You can also display your coupons by adding the included Dispensary Coupons widget to your sidebar, as seen in the example screenshots below.
 
 ## Contribute
 

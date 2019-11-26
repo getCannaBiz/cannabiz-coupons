@@ -1,5 +1,13 @@
 # Changelog
 
+## 2.0
+*   Added coupon code, amount and exp date to widget in `dispensary-coupons.php`
+*   Added coupon code, amount and exp date to shortcode in `dispensary-coupons.php`
+*   Added multiple style updates for the widget and shortcode in `assets/css/style.css`
+*   Updated admin widget description text in `dispensary-coupons.php`
+*   Updated `.pot` file with new text strings for localization in `languages/wpd-coupons.pot`
+*   WordPress Coding Standards updates in `dispensary-coupons.php`
+
 ## 1.9.1
 *   Bugfix added missing helper functions file in `inc/dispensary-coupons-helper-functions.php`
 
