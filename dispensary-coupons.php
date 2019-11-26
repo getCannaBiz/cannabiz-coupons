@@ -954,27 +954,84 @@ add_action( 'widgets_init', 'wpd_coupons_register_widget' );
  */
 function wpd_coupons_shortcode( $atts ) {
 
-	extract(shortcode_atts( array(
-		'limit'    => '5',
-		'image'    => 'yes',
-		'title'    => 'yes',
-		'details'  => 'yes',
-		'products' => 'yes'
+	extract( shortcode_atts( array(
+		'limit'     => '5',
+		'image'     => 'yes',
+		'imagesize' => 'medium',
+		'title'     => 'yes',
+		'details'   => 'yes',
+		'couponexp' => 'yes',
+		'products'  => 'yes'
 	), $atts ) );
 
 	ob_start();
 
-		$wpd_coupons_shortcode = new WP_Query(
-			array(
-				'post_type' => 'coupons',
-				'showposts' => $limit
-			)
-		);
+	$wpd_coupons_shortcode = new WP_Query(
+		array(
+			'post_type' => 'coupons',
+			'showposts' => $limit
+		)
+	);
 
-		while ( $wpd_coupons_shortcode->have_posts() ) : $wpd_coupons_shortcode->the_post();
+	while ( $wpd_coupons_shortcode->have_posts() ) : $wpd_coupons_shortcode->the_post();
 
-		$do_not_duplicate = $post->ID;
+	echo '<div class="wpd-coupons-plugin-meta shortcode">';
 
+	if ( 'yes' == $image ) {
+		/** Display coupon featured image */
+		if ( 'medium' == $imagesize ) {
+			the_post_thumbnail( 'medium' );
+		} else {
+			the_post_thumbnail( $imagesize );
+		}
+	}
+
+	$wpd_coupon_code   = get_post_meta( get_the_id(), 'wpd_coupon_code', true );
+	$wpd_coupon_amount = get_post_meta( get_the_id(), 'wpd_coupon_amount', true );
+	$wpd_coupon_type   = get_post_meta( get_the_id(), 'wpd_coupon_type', true );
+	$wpd_coupon_exp    = get_post_meta( get_the_id(), 'wpd_coupon_exp', true );
+
+	// Wrap the coupon code and expiration date.
+	echo '<div class="wpd-coupons-plugin-meta-item code-exp">';
+
+	// Display coupon code.
+	if ( $wpd_coupon_code ) {
+		echo '<span class="wpd-coupons-plugin-meta-item code"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"><path d="M13.219 4h-3.926c-1.654-2.58-4.919-4.182-8.293-3.983v1.688c2.286-.164 4.79.677 6.113 2.295h-2.113v2.339c-2.059-.157-4.005.605-5 1.159l.688 1.617c1.196-.625 2.53-1.243 4.312-1.026v4.084l10.796 10.827 8.204-8.223-10.781-10.777zm-2.226 5.875c-.962.963-2.598.465-2.88-.85 1.318.139 2.192-.872 2.114-2.017 1.261.338 1.701 1.93.766 2.867z"/></svg> ' . $wpd_coupon_code . '</span>';
+	}
+
+	// Display coupon expiration date.
+	if ( 'yes' == $couponexp ) {
+		if ( $wpd_coupon_exp ) {
+			echo '<span class="wpd-coupons-plugin-meta-item exp">' . esc_attr__( 'Exp', 'wpd-coupons' ) . ': ' . $wpd_coupon_exp . '</span>';
+		}
+	}
+
+	echo '</div>';
+
+	// Display coupon amount.
+	if ( $wpd_coupon_amount && $wpd_coupon_type ) {
+		// Coupon amount default.
+		$coupon_amount = wpd_currency_code() . $wpd_coupon_amount;
+
+		// Coupon amount (if percentage).
+		if ( 'Percentage' == $wpd_coupon_type ) {
+			$coupon_amount = $wpd_coupon_amount . '%';
+		}
+
+		echo '<span class="wpd-coupons-plugin-meta-item amount">' . __( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
+	}
+
+	if ( 'yes' == $title ) {
+		/** Display coupon title */
+		echo '<span class="wpd-coupons-plugin-meta-item title">' . get_the_title( get_the_id() ) . '</span>';
+	}
+
+	if ( 'yes' == $details ) {
+		/** Display coupon details */
+		echo '<span class="wpd-coupons-plugin-meta-item">' . the_content() . '</span>';
+	}
+
+	if ( 'yes' == $products ) {
 		/** Display products that the coupon applies to */
 		$couponflower      = get_post_meta( get_the_id(), '_selected_flowers', true );
 		$couponedible      = get_post_meta( get_the_id(), '_selected_edibles', true );
@@ -985,67 +1042,39 @@ function wpd_coupons_shortcode( $atts ) {
 		$coupongear        = get_post_meta( get_the_id(), '_selected_gear', true );
 		$coupontincture    = get_post_meta( get_the_id(), '_selected_tinctures', true );
 
-		$theme = wp_get_theme(); // gets the current theme so we can check for CannaBiz from WP Dispensary
-		if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
-			$couponlink = ' target="_blank"';
-		} else {
-			$couponlink = '';
+		echo "<span class='wpd-coupons-plugin-meta-item'>";
+
+		if ( '' !== $couponflower ) {
+			echo "<a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a> ";
+		}
+		if ( '' !== $couponedible ) {
+			echo "<a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a> ";
+		}
+		if ( '' !== $couponconcentrate ) {
+			echo "<a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a> ";
+		}
+		if ( '' !== $couponpreroll ) {
+			echo "<a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
+		}
+		if ( '' !== $coupontopical ) {
+			echo "<a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
+		}
+		if ( '' !== $coupongrower ) {
+			echo "<a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
+		}
+		if ( '' !== $coupongear ) {
+			echo "<a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
+		}
+		if ( '' !== $coupontincture ) {
+			echo "<a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
 		}
 
-			echo '<div class="wpd-coupons-plugin-meta shortcode">';
+		echo '</span>';
+	}
 
-			if ( 'yes' == $image ) {
-				/** Display coupon featured image */
-				echo '<a ' . $couponlink . ' href="' . get_permalink( $post->ID ) . '">';
-				the_post_thumbnail( 'thumbnail' );
-				echo '</a>';
-			}
+	echo '</div>';
 
-			if ( 'yes' == $title ) {
-				/** Display coupon title */
-				echo '<span class="wpd-coupons-plugin-meta-item"><h3><a ' . $couponlink . ' href="' . get_permalink( $post->ID ) . '">' . get_the_title( $post->ID ) . '</a></h3></span>';
-			}
-
-			if ( 'yes' == $details ) {
-				/** Display coupon details */
-				echo '<p><span class="wpd-coupons-plugin-meta-item:>' . the_content() . '</span></p>';
-			}
-
-			if ( 'yes' == $products ) {
-
-				echo '<span class="wpd-coupons-plugin-meta-item">';
-
-				if ( '' !== $couponflower ) {
-					echo "<strong>" . __( 'Flower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponflower ) . "'>" . get_the_title( $couponflower ) . "</a>";
-				}
-				if ( '' !== $couponedible ) {
-					echo "<strong>" . __( 'Edible', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponedible ) . "'>" . get_the_title( $couponedible ) . "</a>";
-				}
-				if ( '' !== $couponconcentrate ) {
-					echo "<strong>" . __( 'Concentrate', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponconcentrate ) . "'>" . get_the_title( $couponconcentrate ) . "</a>";
-				}
-				if ( '' !== $couponpreroll ) {
-					echo "<strong>" . __( 'Pre-roll', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $couponpreroll ) . "'>" . get_the_title( $couponpreroll ) . "</a>";
-				}
-				if ( '' !== $coupontopical ) {
-					echo "<strong>" . __( 'Topical', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontopical ) . "'>" . get_the_title( $coupontopical ) . "</a>";
-				}
-				if ( '' !== $coupongrower ) {
-					echo "<strong>" . __( 'Grower', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongrower ) . "'>" . get_the_title( $coupongrower ) . "</a>";
-				}
-				if ( '' !== $coupongear ) {
-					echo "<strong>" . __( 'Gear', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupongear ) . "'>" . get_the_title( $coupongear ) . "</a>";
-				}
-				if ( '' !== $coupontincture ) {
-					echo "<strong>" . __( 'Tincture', 'wpd-coupons' ) . ":</strong> <a href='" . get_permalink( $coupontincture ) . "'>" . get_the_title( $coupontincture ) . "</a>";
-				}
-
-				echo '</span>';
-			}
-
-			echo '</div>';
-
-		endwhile; // end loop
+	endwhile; // end loop
 
 	$output_string = ob_get_contents();
 	ob_end_clean();
@@ -1053,7 +1082,6 @@ function wpd_coupons_shortcode( $atts ) {
 	return $output_string;
 
 }
-
 add_shortcode( 'wpd-coupons', 'wpd_coupons_shortcode' );
 
 
