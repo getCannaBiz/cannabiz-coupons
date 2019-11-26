@@ -39,10 +39,11 @@ Want to help this plugin get better? Head over to [Github](https://github.com/de
 
 == Screenshots ==
 
-1. An example of the Edit Coupon screen
-2. An example of how the widget displays the coupons
-3. The widget editor in the WordPress dashboard
-4. Coupons in the admin dashboard menu
+1. An example of how the shortcode displays the coupons
+2. Coupons in the admin dashboard menu
+3. An example of the Edit Coupon screen
+4. The widget editor in the WordPress dashboard
+5. An example of how the widget displays the coupons
 
 == Installation ==
 
