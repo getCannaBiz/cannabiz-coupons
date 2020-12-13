@@ -1,4 +1,16 @@
 <?php
+/**
+ * The file responsible for defining the custom permalink settings.
+ *
+ * @link       https://www.wpdispensary.com/
+ * @since      1.6
+ *
+ * @package    WPD_Coupons
+ * @subpackage WPD_Coupons/inc
+ */
+
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * The Class responsible for defining the custom permalink settings.

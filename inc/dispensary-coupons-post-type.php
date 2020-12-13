@@ -9,6 +9,9 @@
  * @subpackage WPD_Coupons/inc
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
 /**
  * Coupons post type creation
  *

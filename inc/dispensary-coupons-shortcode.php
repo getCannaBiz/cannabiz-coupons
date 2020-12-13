@@ -9,6 +9,8 @@
  * @subpackage WPD_Coupons/inc
  */
 
+// Exit if accessed directly.
+if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 /**
  * Dispensary Coupons Shortcode
