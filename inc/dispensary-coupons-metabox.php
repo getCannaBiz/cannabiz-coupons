@@ -119,14 +119,14 @@ function wpd_coupons_save_details_meta( $post_id, $post ) {
 
 	/** Add values of $compounddetails_meta as custom fields */
 
-	foreach ( $wpd_coupons_meta as $key => $value ) { /** Cycle through the $wpd_coupons_meta array! */
-		if ( 'revision' === $post->post_type ) { /** Don't store custom data twice */
+	foreach ( $wpd_coupons_meta as $key => $value ) {
+		if ( 'revision' === $post->post_type ) {
 			return;
 		}
-		$value = implode( ',', (array) $value ); // If $value is an array, make it a CSV (unlikely)
-		if ( get_post_meta( $post->ID, $key, false ) ) { // If the custom field already has a value.
+		$value = implode( ',', (array) $value );
+		if ( get_post_meta( $post->ID, $key, false ) ) {
 			update_post_meta( $post->ID, $key, $value );
-		} else { // If the custom field doesn't have a value.
+		} else {
 			add_post_meta( $post->ID, $key, $value );
 		}
 		if ( ! $value ) { /** Delete if blank */
