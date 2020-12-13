@@ -68,6 +68,11 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-shortcode.php
 require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-metabox.php';
 
 /**
+ * The file responsible for running on plugin activation.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-activation.php';
+
+/**
  * Check to make sure WP Dispensary is active
  */
 if ( in_array( 'wp-dispensary/wp-dispensary.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
@@ -338,16 +343,6 @@ wp_reset_postdata(); ?>
 
 <?php }
 add_action( 'wpd_pricingoutput_bottom', 'wpd_coupons_pricing', 20 );
-
-// Registers the plugin activation hook.
-function activate_wpd_coupons() {
-	wp_dispensary_coupons();
-
-	global $wp_rewrite;
-	$wp_rewrite->init();
-	$wp_rewrite->flush_rules();
-}
-register_activation_hook( __FILE__, 'activate_wpd_coupons' );
 
 /**
  * Update messages for Coupons.
