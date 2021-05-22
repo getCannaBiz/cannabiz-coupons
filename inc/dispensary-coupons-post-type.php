@@ -97,4 +97,3 @@ if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
     add_action( 'init', 'wp_dispensary_coupons', 0 );
 
 }
-    

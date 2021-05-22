@@ -132,40 +132,12 @@ class WPD_Coupons_Widget extends WP_Widget {
 
                 // Display products that the coupon applies to.
                 if ( 'on' == $instance['couponproduct'] ) {
-                    $coupon_flower      = get_post_meta( get_the_id(), '_selected_flowers', true );
-                    $coupon_edible      = get_post_meta( get_the_id(), '_selected_edibles', true );
-                    $coupon_concentrate = get_post_meta( get_the_id(), '_selected_concentrates', true );
-                    $coupon_preroll     = get_post_meta( get_the_id(), '_selected_prerolls', true );
-                    $coupon_topical     = get_post_meta( get_the_id(), '_selected_topicals', true );
-                    $coupon_grower      = get_post_meta( get_the_id(), '_selected_growers', true );
-                    $coupon_gear        = get_post_meta( get_the_id(), '_selected_gear', true );
-                    $coupon_tincture    = get_post_meta( get_the_id(), '_selected_tinctures', true );
+                    $selected_product = get_post_meta( get_the_id(), 'selected_product', true );
             
                     echo '<span class="wpd-coupons-plugin-meta-item">';
 
-                    if ( '' !== $coupon_flower ) {
-                        echo '<a href="' . get_permalink( $coupon_flower ) . '">' . get_the_title( $coupon_flower ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_edible ) {
-                        echo '<a href="' . get_permalink( $coupon_edible ) . '">' . get_the_title( $coupon_edible ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_concentrate ) {
-                        echo '<a href="' . get_permalink( $coupon_concentrate ) . '">' . get_the_title( $coupon_concentrate ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_preroll ) {
-                        echo '<a href="' . get_permalink( $coupon_preroll ) . '">' . get_the_title( $coupon_preroll ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_topical ) {
-                        echo '<a href="' . get_permalink( $coupon_topical ) . '">' . get_the_title( $coupon_topical ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_grower ) {
-                        echo '<a href="' . get_permalink( $coupon_grower ) . '">' . get_the_title( $coupon_grower ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_gear ) {
-                        echo '<a href="' . get_permalink( $coupon_gear ) . '">' . get_the_title( $coupon_gear ) . '</a> ';
-                    }
-                    if ( '' !== $coupon_tincture ) {
-                        echo '<a href="' . get_permalink( $coupon_tincture ) . '">' . get_the_title( $coupon_tincture ) . '</a> ';
+                    if ( '' !== $selected_product ) {
+                        echo '<a href="' . get_permalink( $selected_product ) . '">' . get_the_title( $selected_product ) . '</a> ';
                     }
             
                     echo '</span>';
