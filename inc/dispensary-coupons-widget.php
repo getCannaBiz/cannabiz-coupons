@@ -32,7 +32,7 @@ class WPD_Coupons_Widget extends WP_Widget {
 			'wpd_coupons_widget',
 			__( 'Dispensary Coupons', 'wpd-coupons' ),
 			array(
-				'description' => __( 'Your WP Dispensary coupons', 'wpd-coupons' ),
+				'description' => __( 'WP Dispensary coupons', 'wpd-coupons' ),
 				'classname'   => 'wpd-coupons-widget',
 			)
 		);
@@ -75,8 +75,9 @@ class WPD_Coupons_Widget extends WP_Widget {
 
 			while ( $wp_dispensary_coupons_widget->have_posts() ) : $wp_dispensary_coupons_widget->the_post();
 
-			$theme      = wp_get_theme();
+			$theme       = wp_get_theme();
             $coupon_link = '';
+            $img_size    = apply_filters( 'wpd_coupons_widget_image_size', 'medium' );
 
             if ( 'CannaBiz' == $theme->name || 'CannaBiz' == $theme->parent_theme ) {
 				$coupon_link = " target='_blank'";
@@ -87,7 +88,7 @@ class WPD_Coupons_Widget extends WP_Widget {
                 // Display coupon featured image.
                 if ( 'on' == $instance['couponimage'] ) {
                     echo '<a ' . $coupon_link . ' href="' . get_permalink( $post->ID ) . '">';
-                    the_post_thumbnail( 'medium' );
+                    the_post_thumbnail( $img_size );
                     echo '</a>';
                 }
 
