@@ -32,7 +32,7 @@ class WPD_Coupons_Widget extends WP_Widget {
 			'wpd_coupons_widget',
 			__( 'Dispensary Coupons', 'wpd-coupons' ),
 			array(
-				'description' => __( 'WP Dispensary coupons', 'wpd-coupons' ),
+				'description' => esc_attr__( 'WP Dispensary coupons', 'wpd-coupons' ),
 				'classname'   => 'wpd-coupons-widget',
 			)
 		);
@@ -108,7 +108,7 @@ class WPD_Coupons_Widget extends WP_Widget {
                         $coupon_amount = $wpd_coupon_amount . '%';
                     }
 
-                    echo '<span class="wpd-coupons-plugin-meta-item amount">' . __( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
+                    echo '<span class="wpd-coupons-plugin-meta-item amount">' . esc_attr__( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
                 }
 
                 if ( 'on' == $instance['coupontitle'] ) {
@@ -148,7 +148,7 @@ class WPD_Coupons_Widget extends WP_Widget {
 
                 // Display link to all coupons.
                 if ( 'on' == $instance['viewall'] ) {
-                    echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='" . $instance['viewallurl'] . "' target='_blank'>" . __( 'View all coupons', 'wpd-coupons' ) . " &rarr;</a></span></p>";
+                    echo "<p><span class='wpd-coupons-plugin-meta-item'><a class='wpd-coupons-plugin-viewall' href='" . $instance['viewallurl'] . "' target='_blank'>" . esc_attr__( 'View all coupons', 'wpd-coupons' ) . " &rarr;</a></span></p>";
                 }
 
 			endwhile; // end loop
@@ -199,7 +199,7 @@ class WPD_Coupons_Widget extends WP_Widget {
      */
     public function form( $instance ) {
         $defaults = array(
-			'title'         => __( 'Coupons','wpd-coupons' ),
+			'title'         => esc_attr__( 'Coupons','wpd-coupons' ),
 			'limit'         => '5',
 			'coupon'        => '',
 			'couponexp'     => 'on',

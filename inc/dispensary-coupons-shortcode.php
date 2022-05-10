@@ -85,7 +85,7 @@ function wpd_coupons_shortcode( $atts ) {
 			$coupon_amount = $wpd_coupon_amount . '%';
 		}
 
-		echo '<span class="wpd-coupons-plugin-meta-item amount">' . __( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
+		echo '<span class="wpd-coupons-plugin-meta-item amount">' . esc_attr__( 'Save', 'dispensary-coupons' ) . ' ' . $coupon_amount . '</span>';
 	}
 
 	if ( 'yes' == $title ) {

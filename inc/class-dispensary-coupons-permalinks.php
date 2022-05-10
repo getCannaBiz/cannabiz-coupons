@@ -42,7 +42,7 @@ class WPD_Coupons_Permalink_Settings {
 	 */
 	public function register_fields() {
 		register_setting( 'permalink', 'wpd_coupons_slug', 'esc_attr' );
-		add_settings_field( 'wpd_coupons_slug_setting', '<label for="wpd_coupons_slug">' . __( 'Coupons Base', 'wpd-coupons' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
+		add_settings_field( 'wpd_coupons_slug_setting', '<label for="wpd_coupons_slug">' . esc_attr__( 'Coupons Base', 'wpd-coupons' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
 	}
 
 	/**
@@ -65,8 +65,8 @@ class WPD_Coupons_Permalink_Settings {
 		// We need to save the options ourselves; settings api does not trigger save for the permalinks page.
 		if ( isset( $_POST['permalink_structure'] ) ||
 			 isset( $_POST['wpd_coupons_slug'] ) &&
-			 wp_verify_nonce( wp_unslash( $_POST['wpd_coupons_slug_nonce'] ), 'wpd-coupons' ) ) {
-				$wpd_coupons_slug = sanitize_title( wp_unslash( $_POST['wpd_coupons_slug'] ) );
+			 wp_verify_nonce( wp_unslash( filter_input( INPUT_POST, 'wpd_coupons_slug_nonce' ) ), 'wpd-coupons' ) ) {
+				$wpd_coupons_slug = sanitize_title( wp_unslash( filter_input( INPUT_POST, 'wpd_coupons_slug' ) ) );
 				update_option( 'wpd_coupons_slug', $wpd_coupons_slug );
 		}
 	}

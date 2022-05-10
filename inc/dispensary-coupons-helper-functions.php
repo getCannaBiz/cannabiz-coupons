@@ -21,8 +21,8 @@ function get_wpd_coupons_types() {
 	return (array) apply_filters(
 		'wpd_coupons_types',
 		array(
-			'percentage' => __( 'Percentage', 'wpd-coupons' ),
-			'flat_rate'  => __( 'Flat Rate', 'wpd-coupons' ),
+			'percentage' => esc_attr__( 'Percentage', 'wpd-coupons' ),
+			'flat_rate'  => esc_attr__( 'Flat Rate', 'wpd-coupons' ),
 		)
 	);
 }
