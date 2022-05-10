@@ -46,3 +46,14 @@ div.widget[id*=_wpdcoupons_] .widget-action {
 	position: relative;
 	width: 23%;
 }
+
+/** Metabox - Coupon Apply to Product */
+
+.metabox-location-side #postbox-container-2 #wpd_coupons_apply_coupon_to_product .inside .wpd-coupons-box {
+	box-sizing: border-box;
+	width: 100%;
+}
+
+.metabox-location-side #postbox-container-2 #wpd_coupons_apply_coupon_to_product .inside .wpd-coupons-box select {
+	width: 100%;
+}
