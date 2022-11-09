@@ -2,11 +2,10 @@
 /**
  * The file responsible for defining the custom post type.
  *
- * @link       https://www.wpdispensary.com/
- * @since      2.1
- *
  * @package    WPD_Coupons
  * @subpackage WPD_Coupons/inc
+ * @link       https://www.wpdispensary.com/
+ * @since      2.1
  */
 
 // Exit if accessed directly.
@@ -15,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * Coupons post type creation
  *
- * @since	   1.0.0
+ * @since 1.0.0
  */
 if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
 
