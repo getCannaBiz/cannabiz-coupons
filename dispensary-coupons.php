@@ -68,6 +68,11 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-shortcode.php
 require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-metabox.php';
 
 /**
+ * The file responsible for adding columns to the Coupons admin screen.
+ */
+require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-admin-screens.php';
+
+/**
  * The file responsible for running on plugin activation.
  */
 require_once plugin_dir_path( __FILE__ ) . 'inc/dispensary-coupons-activation.php';
