@@ -20,10 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 function get_wpd_coupons_types() {
 	return (array) apply_filters(
 		'wpd_coupons_types',
-		array(
+		[
 			'percentage' => esc_attr__( 'Percentage', 'wpd-coupons' ),
 			'flat_rate'  => esc_attr__( 'Flat Rate', 'wpd-coupons' ),
-		)
+		]
 	);
 }
 

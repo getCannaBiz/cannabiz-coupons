@@ -34,14 +34,14 @@ if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
         // Capitalize first letter of new slug.
         $wpd_coupons_slug_cap = ucfirst( $wpd_coupons_slug );
     
-        $rewrite = array(
+        $rewrite = [
             'slug'       => $wpd_coupons_slug,
             'with_front' => true,
             'pages'      => true,
             'feeds'      => true,
-        );
+        ];
     
-        $labels = array(
+        $labels = [
             'name'                  => _x( 'Coupons', 'Post Type General Name', 'wpd-coupons' ),
             'singular_name'         => _x( 'Coupon', 'Post Type Singular Name', 'wpd-coupons' ),
             'menu_name'             => esc_attr__( 'Coupons', 'wpd-coupons' ),
@@ -67,13 +67,13 @@ if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
             'items_list'            => esc_attr__( 'Coupons list', 'wpd-coupons' ),
             'items_list_navigation' => esc_attr__( 'Coupons list navigation', 'wpd-coupons' ),
             'filter_items_list'     => esc_attr__( 'Filter coupons list', 'wpd-coupons' ),
-        );
-        $args = array(
+        ];
+        $args = [
             'label'               => sprintf( esc_html__( '%s', 'wp-dispensary' ), $wpd_coupons_slug_cap ),
             'description'         => sprintf( esc_html__( 'Display your %s', 'wp-dispensary' ), $wpd_coupons_slug ),
             'labels'              => $labels,
-            'supports'            => array( 'title', 'editor', 'thumbnail', ),
-            'taxonomies'          => array(),
+            'supports'            => [ 'title', 'editor', 'thumbnail', ],
+            'taxonomies'          => [],
             'hierarchical'        => false,
             'public'              => true,
             'show_ui'             => true,
@@ -89,7 +89,7 @@ if ( ! function_exists( 'wp_dispensary_coupons' ) ) {
             'publicly_queryable'  => false,
             'rewrite'             => $rewrite,
             'capability_type'     => 'post',
-        );
+        ];
         register_post_type( 'coupons', $args );
     
     }

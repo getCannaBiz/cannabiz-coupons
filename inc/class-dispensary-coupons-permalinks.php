@@ -34,7 +34,7 @@ class WPD_Coupons_Permalink_Settings {
 	 * Call register fields.
 	 */
 	public function init() {
-		add_filter( 'admin_init', array( &$this, 'register_fields' ) );
+		add_filter( 'admin_init', [ &$this, 'register_fields' ] );
 	}
 
 	/**
@@ -42,7 +42,7 @@ class WPD_Coupons_Permalink_Settings {
 	 */
 	public function register_fields() {
 		register_setting( 'permalink', 'wpd_coupons_slug', 'esc_attr' );
-		add_settings_field( 'wpd_coupons_slug_setting', '<label for="wpd_coupons_slug">' . esc_attr__( 'Coupons Base', 'wpd-coupons' ) . '</label>', array( &$this, 'fields_html' ), 'permalink', 'optional' );
+		add_settings_field( 'wpd_coupons_slug_setting', '<label for="wpd_coupons_slug">' . esc_attr__( 'Coupons Base', 'wpd-coupons' ) . '</label>', [ &$this, 'fields_html' ], 'permalink', 'optional' );
 	}
 
 	/**

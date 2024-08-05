@@ -29,12 +29,12 @@ function wpd_coupons_add_custom_html_column_to_admin_screen() {
 
         // Add thumb column.
         $product_columns->add_column( 'custom_html',
-            array(
+            [
                 'label' => esc_html__( 'Code', 'wp-dispensary' ),
                 'type'  => 'custom_html',
                 'order' => '12',
                 'html'  => '' // pass empty to utilize filter below
-            )
+            ]
         );
     }
 }

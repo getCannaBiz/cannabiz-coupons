@@ -181,14 +181,14 @@ function wpd_coupons_apply_to_product() {
     wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
 
     // Args for products.
-    $args = array(
+    $args = [
         'order'       => 'ASC',
         'orderby'     => 'post_title',
         'parent'      => -1,
         'numberposts' => -1,
         'post_type'   => 'products',
         'post_status' => 'publish'
-    );
+    ];
 
     // Get all products.
     $products = get_posts( $args );

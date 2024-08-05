@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 function wpd_coupons_updated_messages( $messages ) {
 	global $post;
     if ( 'coupons' === get_post_type() ) {
-        $messages['post'] = array(
+        $messages['post'] = [
             0  => '', // Unused. Messages start at index 1.
             1  => esc_attr__( 'Coupon updated.', 'wpd-coupons' ),
             2  => esc_attr__( 'Custom field updated.', 'wpd-coupons' ),
@@ -32,7 +32,7 @@ function wpd_coupons_updated_messages( $messages ) {
             8  => esc_attr__( 'Coupon submitted.', 'wpd-coupons' ),
             9  => sprintf( esc_attr__( 'Coupon scheduled for: <strong>%1$s</strong>.' ), date_i18n( esc_attr__( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
             10 => esc_attr__( 'Coupon draft updated.', 'wpd-coupons' ),
-        );
+        ];
     }
     return $messages;
 }

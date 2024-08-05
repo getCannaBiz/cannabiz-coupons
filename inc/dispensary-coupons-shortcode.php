@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
  */
 function wpd_coupons_shortcode( $atts ) {
 
-	extract( shortcode_atts( array(
+	extract( shortcode_atts( [
 		'limit'     => '5',
 		'image'     => 'yes',
 		'imagesize' => 'medium',
@@ -30,15 +30,15 @@ function wpd_coupons_shortcode( $atts ) {
 		'details'   => 'yes',
 		'couponexp' => 'yes',
 		'products'  => 'yes'
-    ), $atts, 'wpd_coupons' ) );
+    ], $atts, 'wpd_coupons' ) );
 
 	ob_start();
 
 	$wpd_coupons_shortcode = new WP_Query(
-		array(
+		[
 			'post_type' => 'coupons',
 			'showposts' => $limit
-		)
+		]
 	);
 
 	while ( $wpd_coupons_shortcode->have_posts() ) : $wpd_coupons_shortcode->the_post();

@@ -102,12 +102,12 @@ function wpd_coupons_pricing() {
     global $post;
     $product_id = $post->ID;
 
-    $args = array(
+    $args = [
         'meta_key'       => 'selected_product',
         'meta_value'     => $product_id,
         'post_type'      => 'coupons',
         'posts_per_page' => -1
-    );
+    ];
     $product_coupons = new WP_Query( $args );
     if ( $product_coupons->have_posts() ) :
 

@@ -30,10 +30,10 @@ class WPD_Coupons_Widget extends WP_Widget {
         parent::__construct(
             'wpd_coupons_widget',
             esc_attr__( 'Dispensary Coupons', 'wpd-coupons' ),
-            array(
+            [
                 'description' => esc_attr__( 'WP Dispensary coupons', 'wpd-coupons' ),
                 'classname'   => 'wpd-coupons-widget',
-            )
+            ]
         );
 
     }
@@ -67,10 +67,10 @@ class WPD_Coupons_Widget extends WP_Widget {
         do_action( 'dispensary_coupons_before_widget' );
 
             $wp_dispensary_coupons_widget = new WP_Query(
-                array(
+                [
                     'post_type' => 'coupons',
                     'showposts' => $instance['limit']
-                )
+                ]
             );
 
             while ( $wp_dispensary_coupons_widget->have_posts() ) : $wp_dispensary_coupons_widget->the_post();
@@ -202,7 +202,7 @@ class WPD_Coupons_Widget extends WP_Widget {
      * @return void
      */
     public function form( $instance ) {
-        $defaults = array(
+        $defaults = [
             'title'         => esc_attr__( 'Coupons','wpd-coupons' ),
             'limit'         => '5',
             'coupon'        => '',
@@ -213,7 +213,7 @@ class WPD_Coupons_Widget extends WP_Widget {
             'couponproduct' => '',
             'viewall'       => '',
             'viewallurl'    => ''
-        );
+        ];
 
         $instance = wp_parse_args( (array) $instance, $defaults );
         ?>
