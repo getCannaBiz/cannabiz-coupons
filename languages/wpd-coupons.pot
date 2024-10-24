@@ -301,7 +301,7 @@ msgid "WP Dispensary's Coupons"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
-msgid "http://www.wpdispensary.com/"
+msgid "https://cannabizsoftware.com/"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -317,5 +317,5 @@ msgid "WP Dispensary"
 msgstr ""
 
 #. Author URI of the plugin/theme
-msgid "https://www.wpdispensary.com/"
+msgid "https://cannabizsoftware.com/"
 msgstr ""

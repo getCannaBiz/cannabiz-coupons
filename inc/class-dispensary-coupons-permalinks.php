@@ -2,7 +2,7 @@
 /**
  * The file responsible for defining the custom permalink settings.
  *
- * @link       https://www.wpdispensary.com/
+ * @link       https://cannabizsoftware.com/
  * @since      1.6
  *
  * @package    WPD_Coupons
@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 /**
  * The Class responsible for defining the custom permalink settings.
  *
- * @link       https://www.wpdispensary.com/
+ * @link       https://cannabizsoftware.com/
  * @since      1.6
  *
  * @package    WPD_Coupons

@@ -2,7 +2,7 @@
 /**
  * The file responsible for defining the custom admin screen columns
  *
- * @link       https://www.wpdispensary.com/
+ * @link       https://cannabizsoftware.com/
  * @since      2.1.0
  *
  * @package    WPD_Coupons

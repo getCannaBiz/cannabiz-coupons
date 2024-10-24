@@ -57,20 +57,20 @@
 *   Updated the widget name to "WP Dispensary's Coupons"
 
 ## 1.4
-*   Added action hook to display coupons on single menu items pages (action hooks added to WP Dispensary in [WP Dispensary 1.8](http://www.wpdispensary.com/wp-dispensary-version-1-8/))
+*   Added action hook to display coupons on single menu items pages (action hooks added to WP Dispensary in [WP Dispensary 1.8](https://cannabizsoftware.com/wp-dispensary-version-1-8/))
 
 ## 1.3
-*   Added option to select an item from the Growers menu type that was added in [WP Dispensary 1.7](https://www.wpdispensary.com/wp-dispensary-version-1-7/)
+*   Added option to select an item from the Growers menu type that was added in [WP Dispensary 1.7](https://cannabizsoftware.com/wp-dispensary-version-1-7/)
 
 ## 1.2
 *   Added new shortcode and widget options to show or hide the featured image of your dispensary coupon
 
 ## 1.1.1
-*   Added missing shortcode support for new Topicals menu type in [WP Dispensary 1.4](https://www.wpdispensary.com/wp-dispensary-version-1-4/)
+*   Added missing shortcode support for new Topicals menu type in [WP Dispensary 1.4](https://cannabizsoftware.com/wp-dispensary-version-1-4/)
 *   Updated CSS for `wpd-coupons-plugin-meta` class in `css/style.css`
 
 ## 1.1.0
-*   Added support for new Topicals menu type in [WP Dispensary 1.4](https://www.wpdispensary.com/wp-dispensary-version-1-4/)
+*   Added support for new Topicals menu type in [WP Dispensary 1.4](https://cannabizsoftware.com/wp-dispensary-version-1-4/)
 
 ## 1.0
 *   Stable release

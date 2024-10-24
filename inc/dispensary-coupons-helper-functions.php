@@ -2,7 +2,7 @@
 /**
  * The file responsible for defining the custom helper functions.
  *
- * @link       https://www.wpdispensary.com/
+ * @link       https://cannabizsoftware.com/
  * @since      1.9
  *
  * @package    WPD_Coupons

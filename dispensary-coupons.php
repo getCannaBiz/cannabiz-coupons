@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: WP Dispensary's Coupons
- * Plugin URI: http://www.wpdispensary.com/
- * Description: Easily add and display coupons for your marijuana dispensary business. Brought to you by <a href="https://www.wpdispensary.com" target="_blank">WP Dispensary</a> and <a href="http://www.deviodigital.com/" target="_blank">Devio Digital</a>.
+ * Plugin Name: CannaBiz Coupons
+ * Plugin URI:  https://cannabizsoftware.com/
+ * Description: Easily add and display coupons for your dispensary or delivery service business.
  * Version:     2.0
- * Author:      WP Dispensary
- * Author URI:  https://www.wpdispensary.com/
+ * Author:      CannaBiz Software
+ * Author URI:  https://cannabizsoftware.com/
  * Text Domain: wpd-coupons
  * Domain Path: /languages
  *

@@ -4,7 +4,7 @@ The Dispensary Coupons plugin is an official add-on for the [WP Dispensary](http
 
 With this plugin installed, you can add coupons to your website and show them off via the included shortcode and widget.
 
-This plugin also extends the [eCommerce](https://www.wpdispensary.com/product/ecommerce/) add-on for WP Dispensary, allowing customers to use the coupon codes when placing orders.
+This plugin also extends the [eCommerce](https://cannabizsoftware.com/product/ecommerce/) add-on for WP Dispensary, allowing customers to use the coupon codes when placing orders.
 
 ## Requirements
 
@@ -46,7 +46,7 @@ Want to help this plugin get better? Issues and pull requests are more than welc
 
 ### Metaboxes on the Dispensary Coupon editor screen
 
-![WPD Metaboxes](http://www.wpdispensary.com/wp-content/uploads/2016/04/screenshot-4.jpg)
+![WPD Metaboxes](https://cannabizsoftware.com/wp-content/uploads/2016/04/screenshot-4.jpg)
 
 ## Changelog
 

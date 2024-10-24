@@ -4,7 +4,7 @@
  *
  * @package    WPD_Coupons
  * @subpackage WPD_Coupons/inc
- * @link       https://www.wpdispensary.com/
+ * @link       https://cannabizsoftware.com/
  * @since      2.1
  */
 
